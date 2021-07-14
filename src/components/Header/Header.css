@@ -1,0 +1,11 @@
+.header {
+    grid-area: header;
+    background: #872325;
+
+    display: flex;
+    align-items: center;
+}
+
+.header__image {
+    width: 4rem;
+}
