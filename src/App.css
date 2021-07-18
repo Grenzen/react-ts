@@ -10,6 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     height: inherit;
+    overflow-y: hidden;
 }
 
 #root::-webkit-scrollbar {
@@ -29,6 +30,9 @@ html {
     "header header"
     "navbar content";
     grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
-    grid-gap: 5px;
+    grid-template-columns: 3fr 10fr;
+}
+
+::-webkit-scrollbar {
+    width: 0;
 }

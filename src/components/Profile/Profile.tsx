@@ -1,26 +1,20 @@
 import React from "react"
-import './Profile.css'
+import { UserInfo } from '../UserInfo/UserInfo'
+import { Posts } from '../Posts/Posts'
+
+import s from './Profile.module.css'
+
+const images = {
+    background: 'https://cdn.pixabay.com/photo/2018/08/21/23/29/fog-3622519_1280.jpg',
+    avatar: 'https://ichef.bbci.co.uk/news/976/cpsprodpb/A7E9/production/_118158924_gettyimages-507245091.jpg'
+}
 
 export const Profile = () => {
     return (
-        <main className="profile">
-            <div className="profile__back-image">
-            </div>
-            <div>
-                ava + desc
-            </div>
-            <div>
-                My posts
-                <div>
-                    New post
-                </div>
-                <div>
-                    post 1
-                </div>
-                <div>
-                    post 2
-                </div>
-            </div>
+        <main className={s.profile}>
+            <div className={s.image} style={{ backgroundImage: `url(${images.background})` }}></div>
+            <UserInfo />
+            <Posts avatar={images.avatar} />
         </main>
     )
 }

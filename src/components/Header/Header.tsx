@@ -1,14 +1,15 @@
 import React from "react"
-import './Header.css'
+import s from './Header.module.css'
 
 export const Header = () => {
     return (
-        <header className="header">
+        <header className={s.header}>
             <img
-                className="header__image"
+                className={s.image}
                 src="https://img.icons8.com/ios-filled/50/000000/logo.png"
                 alt="logo"
             />
+            <h1>Такая-то сеть</h1>
         </header>
     )
 }

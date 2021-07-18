@@ -1,29 +1,31 @@
 .nav {
     grid-area: navbar;
     background: #312f2f;
-    height: calc(100vh - 6.5rem);
+    height: calc(100vh - 6.1rem);
 
     display: flex;
     flex-direction: column;
 }
 
-.nav__item {
+.item {
     padding: 0.5rem;
 }
 
-.nav__item:hover {
+.item:hover,
+.item.active {
     -webkit-box-shadow: 5px 5px 5px 0px #292727, inset 4px 4px 10px 0px #292727, 5px 5px 10px 5px rgba(41,39,39,1);
     box-shadow: 5px 5px 5px 0px #292727, inset 4px 4px 10px 0px #292727, 5px 5px 10px 5px rgba(41,39,39,1);
     transition: all .5s ease;
 }
 
-.nav__item:hover > .nav__item-link {
+.item:hover > .link,
+.item.active > .link {
     color: #c19445;
     font-size: 1.6rem;
     transition: all .5s ease;
 }
 
-.nav__item-link {
+.link {
     padding-left: 1rem;
     text-decoration: none;
     color: #ccbea5;

@@ -1,0 +1,14 @@
+.profile {
+    padding: 0.5rem;
+    grid-area: content;
+    height: calc(100vh - 6.1rem);
+    overflow-y: scroll;
+    background: #c19445;
+}
+
+.image {
+    height: 15rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

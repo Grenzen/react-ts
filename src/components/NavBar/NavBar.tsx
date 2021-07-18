@@ -1,5 +1,5 @@
 import React from "react"
-import './NavBar.css'
+import s from './NavBar.module.css'
 
 const nav = [
     {id:0, name: 'Profile'},
@@ -11,11 +11,11 @@ const nav = [
 
 export const NavBar = () => {
     return (
-        <nav className="nav">
-            {nav.map((item) => {
+        <nav className={s.nav}>
+            {nav.map((item, idx) => {
                 return (
-                    <div className="nav__item" key={item.id}>
-                        <a className="nav__item-link" href="#h">{ item.name }</a>
+                    <div className={idx === 0 ? `${s.item} ${s.active}` : s.item} key={item.id}>
+                        <a className={s.link} href="#h">{ item.name }</a>
                     </div>
                 )
             })}
