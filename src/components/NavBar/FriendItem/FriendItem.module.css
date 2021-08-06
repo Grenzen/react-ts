@@ -1,0 +1,13 @@
+.friendContainer {
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.friendName {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: aliceblue;
+    padding-bottom: 0.5rem;
+}

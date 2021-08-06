@@ -1,0 +1,31 @@
+.itemContainer {
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+}
+
+.messageContainer {
+    position: relative;
+    width: 80%;
+    max-width: 556px;
+    display: flex;
+    flex-direction: row;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #312f2f;
+}
+
+.message {
+    margin: 0;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+    line-height: 1.2rem;
+    color: aliceblue;
+}
+
+.time {
+    margin-left: auto;
+    align-self: flex-end;
+    color: #c19445;
+    opacity: 0.8;
+}

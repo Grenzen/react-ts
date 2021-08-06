@@ -1,0 +1,22 @@
+.container {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    background-color: #ccbea5;
+    height: calc(100vh - 60px);
+}
+
+.dialogs {
+    overflow-y: scroll;
+    background-color: rgba(240, 248, 255, 0.22);
+    width: 15rem;
+}
+
+.list {
+    list-style-type: none;
+    margin: 1.5rem;
+    padding: 0;
+}
+
+.messages {
+    /*width: calc(100vw - 32rem);*/
+}

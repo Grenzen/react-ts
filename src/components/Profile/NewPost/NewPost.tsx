@@ -24,7 +24,7 @@ export const NewPost = () => {
             <input
                 className={s.button}
                 type="submit"
-                value="Send"/>
+                value="Add post"/>
         </form>
     )
 }

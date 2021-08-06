@@ -1,6 +1,7 @@
 .nav {
     grid-area: navbar;
     background: #312f2f;
+    min-width: 16.5rem;
     height: calc(100vh - 6.1rem);
 
     display: flex;
@@ -11,23 +12,25 @@
     padding: 0.5rem;
 }
 
-.item:hover,
-.item.active {
-    -webkit-box-shadow: 5px 5px 5px 0px #292727, inset 4px 4px 10px 0px #292727, 5px 5px 10px 5px rgba(41,39,39,1);
-    box-shadow: 5px 5px 5px 0px #292727, inset 4px 4px 10px 0px #292727, 5px 5px 10px 5px rgba(41,39,39,1);
-    transition: all .5s ease;
-}
-
 .item:hover > .link,
-.item.active > .link {
+.link.active{
     color: #c19445;
     font-size: 1.6rem;
     transition: all .5s ease;
 }
+
 
 .link {
     padding-left: 1rem;
     text-decoration: none;
     color: #ccbea5;
     font-size: 1.5rem;
+}
+
+.friendsContainer {
+    margin: 2rem 1rem;
+    background-color: #4f48482e;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
 }

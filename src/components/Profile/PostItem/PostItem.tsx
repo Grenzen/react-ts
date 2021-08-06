@@ -1,19 +1,20 @@
 import React from 'react'
+import { Avatar } from '../../Avatar/Avatar'
 import s from './PostItem.module.css'
 
-type PostItemPropTypes = {
-    avatarUrl: string,
-    title: string,
-    text: string,
+
+type PropTypes = {
+    avatarUrl: string
+    title: string
+    text: string
+    likes: number
     time: Date
 }
 
-export const PostItem = (props: PostItemPropTypes) => {
-    const { avatarUrl, title, text, time } = props
-
+export const PostItem:React.FC<PropTypes> = ({avatarUrl, title, text, time, likes}) => {
     return (
         <section className={s.postItem}>
-            <div className={s.image} style={{backgroundImage: `url(${avatarUrl})`}}></div>
+            <Avatar avatarUrl={avatarUrl} />
             <div className={s.container}>
                 <h3 className={s.title}>{title}</h3>
                 <article className={s.text}>{text}</article>
@@ -27,6 +28,7 @@ export const PostItem = (props: PostItemPropTypes) => {
                             : `0${time.getMinutes()}`}
                     `}
                 </time>
+                <span className={s.reaction}>likes { likes }</span>
             </div>
         </section>
     )

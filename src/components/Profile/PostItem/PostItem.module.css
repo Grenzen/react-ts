@@ -7,16 +7,6 @@
     align-items: flex-start;
 }
 
-.image {
-    width: 7rem;
-    height: 7rem;
-    margin-right: 1rem;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    border-radius: 50%;
-}
-
 .container {
     width: 90%;
     display: flex;
@@ -43,4 +33,9 @@
     display: flex;
     align-self: flex-end;
     color: #872325;
+}
+
+.reaction {
+    color: #ccbea5;
+    font-size: 1.2rem;
 }
