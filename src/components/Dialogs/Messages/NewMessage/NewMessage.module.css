@@ -1,0 +1,32 @@
+.newMessageContainer {
+    border-top: 1px solid #f0f8ff38;
+    margin-top: auto;
+    padding: 1rem 0;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+}
+
+.newMessageText {
+    margin-right: 0.5rem;
+    padding: 0.7rem;
+    width: 80%;
+    resize: none;
+    border: none;
+    border-radius: 10px;
+    background-color: #fffbf369;
+    outline: none;
+}
+
+.button {
+    align-self: stretch;
+
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+    background-color: #292727;
+    color: azure;
+}

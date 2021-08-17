@@ -33,7 +33,7 @@ export const Dialogs:React.FC<PropTypes> = ({ userDialogs, userMessages }) => {
                     { mappedDialogs }
                 </ul>
             </div>
-            <div className={s.messages}>
+            <div className={ s.messages }>
                 { messages ? <Messages messages={ messages }/> : 'Select dialog' }
             </div>
         </div>

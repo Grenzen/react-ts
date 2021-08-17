@@ -1,11 +1,32 @@
 import React from 'react'
 import s from './Avatar.module.css'
 
-type PropTypes = {
-    avatarUrl: string
+interface AvatarProps {
+    avatarUrl?: string
+    size?: 'small' | 'medium' | 'large'
+    shape?: 'square' | 'round'
 }
-export const Avatar:React.FC<PropTypes> = ({ avatarUrl }) => {
+
+const getRandomColour = () => {
+    let rand = 0 - 0.5 + Math.random() * (255 - 0 + 1)
+    return Math.round(rand)
+}
+
+export const Avatar:React.FC<AvatarProps> = (
+    {
+        avatarUrl,
+        size = 'medium',
+        shape = 'round'
+    }
+) => {
+    const background = avatarUrl ?
+        { backgroundImage: `url(${avatarUrl})` } :
+        { backgroundColor: `rgb(${getRandomColour()}, ${getRandomColour()}, ${getRandomColour()})` }
+
     return (
-        <div className={s.image} style={{backgroundImage: `url(${avatarUrl})`}}></div>
+        <div
+            className={ [s.avatar, s[`${ size }`], s[`${ shape }`]].join(' ') }
+            style={ background }
+        ></div>
     )
 }

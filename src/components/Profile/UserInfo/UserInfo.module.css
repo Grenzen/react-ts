@@ -4,15 +4,6 @@
     flex-direction: row;
 }
 
-.avatar {
-    width: 12rem;
-    height: 12rem;
-    min-width: 12rem;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
 .description {
     font-size: 2rem;
     padding-left: 1rem;

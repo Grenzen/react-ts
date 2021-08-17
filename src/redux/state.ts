@@ -1,4 +1,8 @@
 import { v1 } from 'uuid'
+import clone from 'clone-deep'
+import { rerenderTree } from '../render'
+
+// types
 
 export type UserTypes = {
     id: string
@@ -15,7 +19,6 @@ export type UserTypes = {
 
 export type PostTypes = {
     id: string
-    title: string
     text: string
     time: Date
     likes: number
@@ -23,6 +26,7 @@ export type PostTypes = {
 
 export type PostsTypes = {
     userId: string
+    newPostText: string
     posts: Array<PostTypes>
 }
 
@@ -72,6 +76,32 @@ export type StateTypes = {
     navbar: NavbarTypes
 }
 
+// Post Function
+
+// add new post
+
+export const addNewPost = () => {
+    const postsClone = clone(state.profile.posts.posts)
+    const newPost = {
+        id: v1(),
+        text: state.profile.posts.newPostText,
+        time: new Date(),
+        likes: 0,
+    }
+    state.profile.posts.posts = [newPost, ...postsClone]
+    state.profile.posts.newPostText = ''
+    rerenderTree(state)
+}
+
+// change text for new post
+
+export const changeText = (newText: string) => {
+    state.profile.posts.newPostText = newText
+    rerenderTree(state)
+}
+
+// state
+
 export const state: StateTypes = {
     profile: {
         user: {
@@ -88,25 +118,23 @@ export const state: StateTypes = {
         },
         posts: {
             userId: '0',
+            newPostText: '',
             posts: [
                 {
-                    id: '0',
-                    title: 'Тег даты и времени',
+                    id: 'ccc',
                     text: 'В новой записи вы решили уточнить точное время дня (а точнее ночи), когда именно была сделана запись. Строку со временем можно оставить просто текстом, но есть вариант получше. В HTML есть специальный тег для разметки даты и времени',
                     time: new Date(`2021-07-18T15:07:55.582Z`),
                     likes: 3,
 
                 },
                 {
-                    id: '1',
-                    title: 'Статическая типизация',
+                    id: 'vvv',
                     text: 'Инструменты для статической типизации, такие как Flow или TypeScript, позволяют отлавливать большую часть ошибок ещё до исполнения кода. Кроме того, они существенно улучшают процессы разработки, добавляя автодополнение и другие возможности. Для приложений с большой кодовой базой мы рекомендуем использовать Flow или TypeScript вместо PropTypes.',
                     time: new Date(`2021-07-18T18:07:13.943Z`),
                     likes: 20,
                 },
                 {
-                    id: '2',
-                    title: 'Flow',
+                    id: 'lll',
                     text: 'Flow — это библиотека для статической типизации JavaScript, разработанная в Facebook и часто применяемая в связке с React. Flow расширяет возможности JavaScript, добавляя аннотации типов для переменных, функций и React-компонентов.',
                     time: new Date(`2021-07-18T18:38:10.515Z`),
                     likes: 11

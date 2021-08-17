@@ -10,9 +10,10 @@ type PropTypes = {
 }
 
 export const Message: React.FC<PropTypes> = ({ message }) => {
+
     return (
         <div className={ s.itemContainer }>
-            <Avatar avatarUrl={message.avatar} />
+            <Avatar avatarUrl={message.avatar} size='small' shape='round' />
             <div className={ s.messageContainer }>
                 <p className={ s.message }>{ message.message }</p>
                 <span className={ s.time }>{ message.time }</span>

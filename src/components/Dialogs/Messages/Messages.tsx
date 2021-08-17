@@ -1,6 +1,8 @@
 import React from 'react'
 import { UserMessageTypes } from '../../../redux/state'
 import { Message } from './Message/Message'
+import { NewMessage } from './NewMessage/NewMessage'
+import s from './Messages.module.css'
 
 
 type PropTypes = {
@@ -16,8 +18,9 @@ export const Messages:React.FC<PropTypes> = ({ messages }) => {
     ))
 
     return (
-        <div>
+        <div className={ s.messagesContainer }>
             { mappedMessages }
+            <NewMessage />
         </div>
     )
 }

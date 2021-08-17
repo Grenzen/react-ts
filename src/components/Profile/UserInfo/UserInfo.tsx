@@ -1,6 +1,7 @@
 import React from 'react'
 import { UserTypes } from '../../../redux/state'
 import s from './UserInfo.module.css'
+import {Avatar} from "../../Avatar/Avatar";
 
 
 
@@ -21,7 +22,7 @@ export const UserInfo:React.FC<PropTypes> = ({ user }) => {
     } = user
     return (
         <div className={ s.info }>
-            <div className={ s.avatar } style={{ backgroundImage: `url(${ avatar })` }}></div>
+            <Avatar avatarUrl={ avatar } shape='square' size='large' />
             <div className={ s.description }>
                 <h2 className={ `${s.userInfo} ${s.userName}` }>{`${ firstName } ${ lastName } ${ surName }`}</h2>
                 <p className={ s.userInfo }>{ `Date of Birth: ${ birthDate }` }</p>

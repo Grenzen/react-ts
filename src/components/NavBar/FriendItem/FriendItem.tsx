@@ -12,7 +12,7 @@ export const FriendItem:React.FC<PropTypes> = ({ friend }) => {
     return (
         <div className={s.friendContainer}>
             <span className={s.friendName}>{ name }</span>
-            <Avatar avatarUrl={ avatar } />
+            <Avatar avatarUrl={ avatar } shape='round' size='medium' />
         </div>
     )
 }

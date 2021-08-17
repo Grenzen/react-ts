@@ -1,11 +1,7 @@
-.container {
+.newPostContainer {
     display: flex;
     flex-direction: column;
     margin-bottom: 2rem;
-}
-
-.text {
-    resize: none;
 }
 
 .title,
@@ -13,31 +9,20 @@
     margin: .1rem 0;
     background: #e4c6926b;
     border: none;
-    /*border: 1px solid #292727;*/
+    border-radius: 10px;
     outline: none;
     -moz-appearance: none;
     padding: 1rem;
     color: #292727;
 }
 
+.text {
+    resize: none;
+    margin-bottom: 0.8rem;
+}
+
 .title::placeholder,
 .text::placeholder {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-    color: #312f2f;
-}
-
-.button {
-    display: flex;
-    justify-content: center;
-    align-self: flex-end;
-
-    width: 10rem;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-    margin-top: 1rem;
-    background-color: #872325;
-    color: #ccbea5;
-    cursor: pointer;
-    text-transform: uppercase;
+    color: rgba(49, 47, 47, 0.58);
 }

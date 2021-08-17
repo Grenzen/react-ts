@@ -1,30 +1,51 @@
-import React from 'react'
+import React, { FormEvent, ChangeEvent, KeyboardEvent } from 'react'
+import { FormButton } from '../../FormButton/FormButton'
+import { changeText } from '../../../redux/state'
 import s from './NewPost.module.css'
 
-export const NewPost = () => {
-    const handleSubmit = (e: any) => {
-        e.preventDefault()
-        console.log(e)
+type PropTypes = {
+    newPostText: string
+    addNewPost: () => void
+}
+
+export const NewPost:React.FC<PropTypes> = ({ newPostText, addNewPost }) => {
+
+    const createNewPost = () => addNewPost()
+
+    const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        createNewPost()
     }
+    const onEnterPressHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+        if (event.key === 'Enter') {
+            event.preventDefault()
+            createNewPost()
+        }
+    }
+
+    const changePostTextHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        changeText(event.currentTarget.value)
+    }
+
     return (
         <form
-            className={s.container}
-            onSubmit={handleSubmit}
+            className={ s.newPostContainer }
+            onSubmit={ submitHandler }
         >
-            <input
-                className={s.title}
-                type="text"
-                placeholder="Write title..."
-            />
             <textarea
-                className={s.text}
-                rows={5}
+                className={ s.text }
+                rows={ 5 }
+                value={ newPostText }
                 placeholder="Write text..."
+                onChange={ changePostTextHandler }
+                onKeyPress={ onEnterPressHandler }
             />
-            <input
-                className={s.button}
-                type="submit"
-                value="Add post"/>
+            <FormButton
+                value="Add post"
+                position="end"
+                primary={ true }
+                size="medium"
+            />
         </form>
     )
 }

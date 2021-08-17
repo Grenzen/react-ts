@@ -1,0 +1,6 @@
+.messagesContainer {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 70px);
+}
