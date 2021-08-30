@@ -1,31 +1,35 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
-import { ProfileTypes, DialogsTypes } from './redux/state'
+import { ProfileTypes, DialogsTypes, ActionType } from './redux/state'
 import { ProfilePage } from './Pages/ProfilePage/ProfilePage'
 import { DialogsPage } from './Pages/DialogsPage/DialogsPage'
 import { NewsPage } from './Pages/NewsPage/NewsPage'
 import { MusicPage } from './Pages/MusicPage/MusicPage'
 import { SettingsPage } from './Pages/SettingsPage/SettingsPage'
 
-export const useRoutes = (profile: ProfileTypes, dialogs: DialogsTypes) => {
+export const useRoutes = (
+    profile: ProfileTypes,
+    dialogs: DialogsTypes,
+    dispatch: (action: ActionType) => void,
+) => {
     return (
         <Switch>
             <Route path="/profile">
-                <ProfilePage profile={ profile } />
+                <ProfilePage profile={ profile } dispatch={ dispatch }/>
             </Route>
             <Route path="/dialogs">
-                <DialogsPage dialogs={ dialogs } />
+                <DialogsPage dialogs={ dialogs }/>
             </Route>
             <Route path="/news">
-                <NewsPage />
+                <NewsPage/>
             </Route>
             <Route path="/music">
-                <MusicPage />
+                <MusicPage/>
             </Route>
             <Route path="/settings">
-                <SettingsPage />
+                <SettingsPage/>
             </Route>
-            <Redirect to="/profile" />
+            <Redirect to="/profile"/>
         </Switch>
     )
 }

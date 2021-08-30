@@ -1,6 +1,6 @@
 import React from 'react'
 import { UserInfo } from './UserInfo/UserInfo'
-import { PostsTypes, UserTypes } from '../../redux/state'
+import { ActionType, PostsTypes, UserTypes } from '../../redux/state'
 import { Posts } from './Posts/Posts'
 import s from './Profile.module.css'
 
@@ -8,14 +8,14 @@ import s from './Profile.module.css'
 type PropTypes = {
     user: UserTypes
     posts: PostsTypes
-    addNewPost: () => void
+    dispatch: (action: ActionType) => void
 }
 
 export const Profile: React.FC<PropTypes> = (
     {
         user,
         posts,
-        addNewPost,
+        dispatch,
     }) => {
     return (
         <main className={ s.profile }>
@@ -24,7 +24,11 @@ export const Profile: React.FC<PropTypes> = (
                 style={ { backgroundImage: `url(${ user.background })` } }
             ></div>
             <UserInfo user={ user }/>
-            <Posts avatar={ user.avatar } userPosts={ posts } addNewPost={ addNewPost }/>
+            <Posts
+                avatar={ user.avatar }
+                userPosts={ posts }
+                dispatch={ dispatch }
+            />
         </main>
     )
 }

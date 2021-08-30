@@ -1,6 +1,6 @@
-import React, {FormEvent, useRef} from 'react'
+import React, { FormEvent, useRef } from 'react'
 import s from './NewMessage.module.css'
-import {FormButton} from "../../../FormButton/FormButton";
+import { FormButton } from '../../../FormButton/FormButton'
 
 export const NewMessage = () => {
     const messageRef = useRef<HTMLTextAreaElement>(null)
@@ -24,7 +24,7 @@ export const NewMessage = () => {
                     rows={ 1 }
                     placeholder="Write message..."
                 />
-                <FormButton value="Send" position="stretch" primary={ true } size="medium" />
+                <FormButton value="Send" position="stretch" primary={ true } size="medium"/>
             </form>
         </div>
     )

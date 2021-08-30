@@ -1,16 +1,23 @@
 import React, { FormEvent, ChangeEvent, KeyboardEvent } from 'react'
-import { FormButton } from '../../FormButton/FormButton'
-import { changeText } from '../../../redux/state'
+import { FormButton } from '../../../FormButton/FormButton'
 import s from './NewPost.module.css'
+import { ActionType } from '../../../../redux/state'
+import * as actions from '../../../../store/actions/posts'
+
 
 type PropTypes = {
     newPostText: string
-    addNewPost: () => void
+    dispatch: (action: ActionType) => void
 }
 
-export const NewPost:React.FC<PropTypes> = ({ newPostText, addNewPost }) => {
+export const NewPost: React.FC<PropTypes> = (
+    {
+        newPostText, dispatch,
+    }) => {
 
-    const createNewPost = () => addNewPost()
+    const createNewPost = () => {
+        dispatch(actions.addNewPost())
+    }
 
     const submitHandler = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
@@ -24,7 +31,7 @@ export const NewPost:React.FC<PropTypes> = ({ newPostText, addNewPost }) => {
     }
 
     const changePostTextHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        changeText(event.currentTarget.value)
+        dispatch(actions.updateNewPostText(event.currentTarget.value))
     }
 
     return (

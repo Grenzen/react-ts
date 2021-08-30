@@ -1,8 +1,18 @@
 import './index.css'
-import reportWebVitals from './reportWebVitals'
-import { rerenderTree } from './render'
-import { state } from './redux/state'
+import { store } from './redux/state'
+import ReactDOM from 'react-dom'
+import React from 'react'
+import { App } from './App'
 
-rerenderTree(state)
-
-reportWebVitals()
+const rerenderTree = () => {
+    ReactDOM.render(
+        <React.StrictMode>
+            <App
+                store={ store }
+            />
+        </React.StrictMode>,
+        document.getElementById('root'),
+    )
+}
+rerenderTree()
+store.subscribe(rerenderTree)

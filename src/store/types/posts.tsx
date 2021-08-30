@@ -1,0 +1,2 @@
+export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
+export const ADD_NEW_POST = 'ADD-NEW-POST'

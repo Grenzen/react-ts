@@ -1,21 +1,20 @@
 import React from 'react'
-import { NewPost } from '../NewPost/NewPost'
-import { PostItem } from '../PostItem/PostItem'
-import { PostsTypes } from '../../../redux/state'
-
+import { NewPost } from './NewPost/NewPost'
+import { PostItem } from './PostItem/PostItem'
+import { ActionType, PostsTypes } from '../../../redux/state'
 import s from './Posts.module.css'
+
 
 type PropTypes = {
     avatar: string
     userPosts: PostsTypes
-    addNewPost: () => void
+    dispatch: (action: ActionType) => void
 }
 
 export const Posts: React.FC<PropTypes> = (
     {
-        avatar,
-        userPosts,
-        addNewPost,
+        avatar, userPosts,
+        dispatch,
     }) => {
 
     const { posts, newPostText } = userPosts
@@ -32,7 +31,10 @@ export const Posts: React.FC<PropTypes> = (
     return (
         <div className={ s.postsContainer }>
             <h2 className={ s.title }>My Posts</h2>
-            <NewPost newPostText={ newPostText } addNewPost={ addNewPost }/>
+            <NewPost
+                newPostText={ newPostText }
+                dispatch={ dispatch }
+            />
             { mappedPosts }
         </div>
     )

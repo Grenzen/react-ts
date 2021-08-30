@@ -25,13 +25,12 @@ const nav: NavTypes = [
 ]
 
 export const NavBar:React.FC<PropTypes> = ({ navbar }) => {
-    const mappedNavigation = nav.map((item, idx) => (
+    const mappedNavigation = nav.map((item) => (
             <div className={ s.item } key={ item.id }>
                 <NavLink
                     to={`/${item.name.toLowerCase()}`}
                     className={ s.link }
                     activeClassName={s.active}
-                    href="#h"
                 >{ item.name }</NavLink>
             </div>
     ))
