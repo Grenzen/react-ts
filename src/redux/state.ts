@@ -1,7 +1,9 @@
 import { v1 } from 'uuid'
 import clone from 'clone-deep'
-import * as types from '../store/types/posts'
-import * as actions from '../store/actions/posts'
+import * as postsTypes from '../store/types/posts'
+import * as dialogsTypes from '../store/types/dialogs'
+import * as postsActions from '../store/actions/posts'
+import * as dialogsActions from '../store/actions/dialogs'
 // TS
 export type UserTypes = {
     id: string
@@ -51,6 +53,8 @@ export type UsersMessagesTypes = {
 }
 
 export type DialogsTypes = {
+    selectedDialog: string | null
+    selectedMessages: { messages: Array<UserMessageTypes> } | null
     userDialogs: Array<DialogTypes>
     userMessages: UsersMessagesTypes
 }
@@ -75,9 +79,10 @@ export type StateTypes = {
     navbar: NavbarTypes
 }
 
-export type UpdateNewPostTextType = ReturnType<typeof actions.updateNewPostText>
-export type AddNewPostType = ReturnType<typeof actions.addNewPost>
-export type ActionType = AddNewPostType | UpdateNewPostTextType
+export type UpdateNewPostTextType = ReturnType<typeof postsActions.updateNewPostText>
+export type AddNewPostType = ReturnType<typeof postsActions.addNewPost>
+export type SelectDialogType = ReturnType<typeof dialogsActions.selectDialog>
+export type ActionType = AddNewPostType | UpdateNewPostTextType | SelectDialogType
 
 export type StoreType = {
     _state: StateTypes
@@ -130,6 +135,8 @@ export const store: StoreType = {
             },
         },
         dialogs: {
+            selectedDialog: null,
+            selectedMessages: null,
             userDialogs: [
                 {
                     id: '0',
@@ -307,7 +314,7 @@ export const store: StoreType = {
 
     dispatch(action) {
         switch (action.type) {
-            case types.ADD_NEW_POST: // добавить новый пост на страницу профиля
+            case postsTypes.ADD_NEW_POST: // добавить новый пост на страницу профиля
                 const postsClone = clone(this._state.profile.posts.posts)
                 const newPost = {
                     id: v1(),
@@ -319,10 +326,15 @@ export const store: StoreType = {
                 this._state.profile.posts.newPostText = ''
                 this._callSubscriber()
                 break
-            case types.UPDATE_NEW_POST_TEXT: // изменить текст поста на странице профиля
-                if (action.newText) this._state.profile.posts.newPostText = action.newText
+            case postsTypes.UPDATE_NEW_POST_TEXT: // изменить текст поста на странице профиля
+                this._state.profile.posts.newPostText = action.newText
                 this._callSubscriber()
                 break
+            case dialogsTypes.SELECT_DIALOG: // выбрать диалог
+                const messagesClone = clone(this._state.dialogs.userMessages[ action.id ])
+                this._state.dialogs.selectedMessages = messagesClone
+                this._state.dialogs.selectedDialog = action.id
+                this._callSubscriber()
         }
     },
 }

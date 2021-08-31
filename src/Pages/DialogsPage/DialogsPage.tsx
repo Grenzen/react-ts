@@ -1,16 +1,19 @@
 import React from 'react'
-import { DialogsTypes } from '../../redux/state'
+import { ActionType, DialogsTypes } from '../../redux/state'
 import { Dialogs } from '../../components/Dialogs/Dialogs'
 
 type PropTypes = {
     dialogs: DialogsTypes
+    dispatch: (action: ActionType) => void
 }
 
-export const DialogsPage:React.FC<PropTypes> = ({ dialogs }) => {
-    const { userDialogs, userMessages } = dialogs
+export const DialogsPage: React.FC<PropTypes> = ({ dialogs, dispatch }) => {
     return (
         <>
-            <Dialogs userDialogs={ userDialogs } userMessages={ userMessages }/>
+            <Dialogs
+                dialogs={ dialogs }
+                dispatch={ dispatch }
+            />
         </>
     )
 }

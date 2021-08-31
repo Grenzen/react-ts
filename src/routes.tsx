@@ -18,7 +18,7 @@ export const useRoutes = (
                 <ProfilePage profile={ profile } dispatch={ dispatch }/>
             </Route>
             <Route path="/dialogs">
-                <DialogsPage dialogs={ dialogs }/>
+                <DialogsPage dialogs={ dialogs } dispatch={ dispatch }/>
             </Route>
             <Route path="/news">
                 <NewsPage/>
