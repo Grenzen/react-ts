@@ -49,12 +49,12 @@ export type UserMessageTypes = {
 }
 
 export type UsersMessagesTypes = {
-    [ key: string ]: { messages: Array<UserMessageTypes> }
+    [ key: string ]: Array<UserMessageTypes>
 }
 
 export type DialogsTypes = {
     selectedDialog: DialogTypes | null
-    selectedMessages: { messages: Array<UserMessageTypes> } | null
+    selectedMessages: Array<UserMessageTypes> | null
     userDialogs: Array<DialogTypes>
     userMessages: UsersMessagesTypes
 }
@@ -165,102 +165,93 @@ export const store: StoreType = {
                 },
             ],
             userMessages: {
-                '0': {
-                    messages: [
-                        {
-                            id: v1(),
-                            message: 'Hi',
-                            time: '22:00',
-                        },
-                        {
-                            id: v1(),
-                            message: 'How are you?',
-                            time: '22:01',
-                        },
-                        {
-                            id: v1(),
-                            message: 'What are you doing now?',
-                            time: '22:02',
-                        },
-                    ],
-                },
-                '1': {
-                    messages: [
-                        {
-                            id: v1(),
-                            message: 'Hello',
-                            time: '22:00',
-                        },
-                        {
-                            id: v1(),
-                            message: 'Do you wanna go for walks?',
-                            time: '22:01',
-                        },
-                        {
-                            id: v1(),
-                            message: 'Let\'s meet at five',
-                            time: '22:02',
-                        },
-                    ],
-                },
-                '2': {
-                    messages: [
-                        {
-                            id: v1(),
-                            message: 'Yo',
-                            time: '22:00',
-                        },
-                        {
-                            id: v1(),
-                            message: 'Are you sleeping?',
-                            time: '22:01',
-                        },
-                        {
-                            id: v1(),
-                            message: 'Watch this crazy stuff',
-                            time: '22:02',
-                        },
-                    ],
-                },
-                '3': {
-                    messages: [
-                        {
-                            id: v1(),
-                            message: 'Oh man',
-                            time: '22:00',
-                        },
-                        {
-                            id: v1(),
-                            message: 'You so mad',
-                            time: '22:01',
-                        },
-                        {
-                            id: v1(),
-                            message: 'Your task in this kata is to implement a function that calculates the sum of the integers inside a string. For example, in the string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog", the sum of the integers is 3635.',
-                            time: '22:02',
-                        },
-                    ],
-                },
-                '4': {
-                    messages: [
-                        {
-                            id: v1(),
-                            message: 'See you later',
-                            time: '22:00',
-                        },
-                        {
-                            id: v1(),
-                            message: 'Don\'t forget about our business',
-                            time: '22:01',
-                        },
-                        {
-                            id: v1(),
-                            message: 'I call you later',
-                            time: '22:02',
-                        },
-                    ],
-                },
+                '0': [
+                    {
+                        id: v1(),
+                        message: 'Hi',
+                        time: '22:00',
+                    },
+                    {
+                        id: v1(),
+                        message: 'How are you?',
+                        time: '22:01',
+                    },
+                    {
+                        id: v1(),
+                        message: 'What are you doing now?',
+                        time: '22:02',
+                    },
+                ],
+                '1': [
+                    {
+                        id: v1(),
+                        message: 'Hello',
+                        time: '22:00',
+                    },
+                    {
+                        id: v1(),
+                        message: 'Do you wanna go for walks?',
+                        time: '22:01',
+                    },
+                    {
+                        id: v1(),
+                        message: 'Let\'s meet at five',
+                        time: '22:02',
+                    },
+                ],
+                '2': [
+                    {
+                        id: v1(),
+                        message: 'Yo',
+                        time: '22:00',
+                    },
+                    {
+                        id: v1(),
+                        message: 'Are you sleeping?',
+                        time: '22:01',
+                    },
+                    {
+                        id: v1(),
+                        message: 'Watch this crazy stuff',
+                        time: '22:02',
+                    },
+                ],
+                '3': [
+                    {
+                        id: v1(),
+                        message: 'Oh man',
+                        time: '22:00',
+                    },
+                    {
+                        id: v1(),
+                        message: 'You so mad',
+                        time: '22:01',
+                    },
+                    {
+                        id: v1(),
+                        message: 'Your task in this kata is to implement a function that calculates the sum of the integers inside a string. For example, in the string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog", the sum of the integers is 3635.',
+                        time: '22:02',
+                    },
+                ],
+                '4': [
+                    {
+                        id: v1(),
+                        message: 'See you later',
+                        time: '22:00',
+                    },
+                    {
+                        id: v1(),
+                        message: 'Don\'t forget about our business',
+                        time: '22:01',
+                    },
+                    {
+                        id: v1(),
+                        message: 'I call you later',
+                        time: '22:02',
+                    },
+                ],
             },
+
         },
         navbar: {
             friends: {

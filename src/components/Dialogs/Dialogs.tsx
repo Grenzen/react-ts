@@ -33,7 +33,7 @@ export const Dialogs: React.FC<PropTypes> = (
             <div className={ s.messages }>
                 { selectedMessages
                     ? <Messages
-                        messages={ selectedMessages.messages }
+                        messages={ selectedMessages }
                         friendAvatar={ selectedDialog ? selectedDialog.avatar : undefined }
                     />
                     : 'Select dialog' }
