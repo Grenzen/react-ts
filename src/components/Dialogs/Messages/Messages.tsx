@@ -7,20 +7,26 @@ import s from './Messages.module.css'
 
 type PropTypes = {
     messages: Array<UserMessageTypes>
+    friendAvatar: string | undefined
 }
 
-export const Messages:React.FC<PropTypes> = ({ messages }) => {
-    const mappedMessages = messages.map((message:UserMessageTypes) => (
+export const Messages: React.FC<PropTypes> = (
+    {
+        messages,
+        friendAvatar,
+    }) => {
+    const mappedMessages = messages.map((message: UserMessageTypes) => (
         <Message
             key={ message.id }
             message={ message }
+            friendAvatar={ friendAvatar }
         />
     ))
 
     return (
         <div className={ s.messagesContainer }>
             { mappedMessages }
-            <NewMessage />
+            <NewMessage/>
         </div>
     )
 }

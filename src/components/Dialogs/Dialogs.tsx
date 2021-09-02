@@ -13,7 +13,7 @@ export const Dialogs: React.FC<PropTypes> = (
     {
         dialogs, dispatch,
     }) => {
-    const { userDialogs, selectedMessages } = dialogs
+    const { userDialogs, selectedMessages, selectedDialog } = dialogs
 
     const mappedDialogs = userDialogs.map((dialog: DialogTypes) => (
         <Dialog
@@ -31,7 +31,12 @@ export const Dialogs: React.FC<PropTypes> = (
                 </ul>
             </div>
             <div className={ s.messages }>
-                { selectedMessages ? <Messages messages={ selectedMessages.messages }/> : 'Select dialog' }
+                { selectedMessages
+                    ? <Messages
+                        messages={ selectedMessages.messages }
+                        friendAvatar={ selectedDialog ? selectedDialog.avatar : undefined }
+                    />
+                    : 'Select dialog' }
             </div>
         </div>
     )

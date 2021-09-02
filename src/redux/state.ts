@@ -39,11 +39,11 @@ export type ProfileTypes = {
 export type DialogTypes = {
     id: string
     name: string
+    avatar: string
 }
 
 export type UserMessageTypes = {
     id: string
-    avatar: string
     message: string
     time: string
 }
@@ -53,7 +53,7 @@ export type UsersMessagesTypes = {
 }
 
 export type DialogsTypes = {
-    selectedDialog: string | null
+    selectedDialog: DialogTypes | null
     selectedMessages: { messages: Array<UserMessageTypes> } | null
     userDialogs: Array<DialogTypes>
     userMessages: UsersMessagesTypes
@@ -141,22 +141,27 @@ export const store: StoreType = {
                 {
                     id: '0',
                     name: 'John',
+                    avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                 },
                 {
                     id: '1',
                     name: 'Sara',
+                    avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                 },
                 {
                     id: '2',
                     name: 'George',
+                    avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                 },
                 {
                     id: '3',
                     name: 'Jinny',
+                    avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                 },
                 {
                     id: '4',
                     name: 'Harry',
+                    avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                 },
             ],
             userMessages: {
@@ -164,19 +169,16 @@ export const store: StoreType = {
                     messages: [
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'Hi',
                             time: '22:00',
                         },
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'How are you?',
                             time: '22:01',
                         },
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'What are you doing now?',
                             time: '22:02',
                         },
@@ -186,19 +188,16 @@ export const store: StoreType = {
                     messages: [
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'Hello',
                             time: '22:00',
                         },
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'Do you wanna go for walks?',
                             time: '22:01',
                         },
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'Let\'s meet at five',
                             time: '22:02',
                         },
@@ -208,19 +207,16 @@ export const store: StoreType = {
                     messages: [
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'Yo',
                             time: '22:00',
                         },
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'Are you sleeping?',
                             time: '22:01',
                         },
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'Watch this crazy stuff',
                             time: '22:02',
                         },
@@ -230,19 +226,16 @@ export const store: StoreType = {
                     messages: [
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'Oh man',
                             time: '22:00',
                         },
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'You so mad',
                             time: '22:01',
                         },
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'Your task in this kata is to implement a function that calculates the sum of the integers inside a string. For example, in the string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog", the sum of the integers is 3635.',
                             time: '22:02',
                         },
@@ -252,19 +245,16 @@ export const store: StoreType = {
                     messages: [
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'See you later',
                             time: '22:00',
                         },
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'Don\'t forget about our business',
                             time: '22:01',
                         },
                         {
                             id: v1(),
-                            avatar: 'https://sun9-74.userapi.com/Ph-WiuOtF985il9AvN9JqiCWedmHtSGSSTXrSA/ltEB2Z2-YO4.jpg',
                             message: 'I call you later',
                             time: '22:02',
                         },
@@ -333,7 +323,8 @@ export const store: StoreType = {
             case dialogsTypes.SELECT_DIALOG: // выбрать диалог
                 const messagesClone = clone(this._state.dialogs.userMessages[ action.id ])
                 this._state.dialogs.selectedMessages = messagesClone
-                this._state.dialogs.selectedDialog = action.id
+                this._state.dialogs.selectedDialog = clone(this._state.dialogs.userDialogs
+                    .find(item => item.id === action.id)) || null
                 this._callSubscriber()
         }
     },
