@@ -5,17 +5,29 @@ import s from './Message.module.css'
 
 
 type PropTypes = {
+    userMode: boolean
+    name: string
     message: UserMessageTypes
-    friendAvatar: string | undefined
+    avatar: string | undefined
 }
 
-export const Message: React.FC<PropTypes> = ({ message, friendAvatar }) => {
+export const Message: React.FC<PropTypes> = (
+    {
+        userMode,
+        name,
+        message,
+        avatar,
+    }) => {
+    const itemContainerMode = userMode ? `${ s.userItemContainer }` : `${ s.friendItemContainer }`
 
     return (
-        <div className={ s.itemContainer }>
-            <Avatar avatarUrl={ friendAvatar } size="small" shape="round"/>
+        <div className={ [s.itemContainer, itemContainerMode].join(' ') }>
+            <Avatar avatarUrl={ avatar } size="small" shape="round"/>
             <div className={ s.messageContainer }>
-                <p className={ s.message }>{ message.message }</p>
+                <div>
+                    <p className={ s.userName }>{ name }</p>
+                    <p className={ s.message }>{ message.message }</p>
+                </div>
                 <span className={ s.time }>{ message.time }</span>
             </div>
         </div>

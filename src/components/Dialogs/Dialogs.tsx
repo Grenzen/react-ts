@@ -1,17 +1,20 @@
 import React from 'react'
-import { ActionType, DialogsTypes, DialogTypes } from '../../redux/state'
+import { ActionType, DialogsTypes, DialogTypes, UserTypes } from '../../redux/state'
 import { Dialog } from './Dialog/Dialog'
 import { Messages } from './Messages/Messages'
 import s from './Dialogs.module.css'
 
 type PropTypes = {
     dialogs: DialogsTypes
+    user: UserTypes
     dispatch: (action: ActionType) => void
 }
 
 export const Dialogs: React.FC<PropTypes> = (
     {
-        dialogs, dispatch,
+        dialogs,
+        user,
+        dispatch,
     }) => {
     const { userDialogs, selectedMessages, selectedDialog } = dialogs
 
@@ -31,10 +34,11 @@ export const Dialogs: React.FC<PropTypes> = (
                 </ul>
             </div>
             <div className={ s.messages }>
-                { selectedMessages
+                { selectedDialog && selectedMessages
                     ? <Messages
                         messages={ selectedMessages }
-                        friendAvatar={ selectedDialog ? selectedDialog.avatar : undefined }
+                        friend={ selectedDialog }
+                        user={ user }
                     />
                     : 'Select dialog' }
             </div>

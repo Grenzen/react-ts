@@ -97,7 +97,7 @@ export const store: StoreType = {
     _state: {
         profile: {
             user: {
-                id: '0',
+                id: 'cscs',
                 firstName: 'John',
                 lastName: 'Dou',
                 surName: '',
@@ -167,85 +167,85 @@ export const store: StoreType = {
             userMessages: {
                 '0': [
                     {
-                        id: v1(),
+                        id: '0',
                         message: 'Hi',
                         time: '22:00',
                     },
                     {
-                        id: v1(),
+                        id: 'cscs',
                         message: 'How are you?',
                         time: '22:01',
                     },
                     {
-                        id: v1(),
+                        id: '0',
                         message: 'What are you doing now?',
                         time: '22:02',
                     },
                 ],
                 '1': [
                     {
-                        id: v1(),
+                        id: '1',
                         message: 'Hello',
                         time: '22:00',
                     },
                     {
-                        id: v1(),
+                        id: 'cscs',
                         message: 'Do you wanna go for walks?',
                         time: '22:01',
                     },
                     {
-                        id: v1(),
+                        id: '1',
                         message: 'Let\'s meet at five',
                         time: '22:02',
                     },
                 ],
                 '2': [
                     {
-                        id: v1(),
+                        id: '2',
                         message: 'Yo',
                         time: '22:00',
                     },
                     {
-                        id: v1(),
+                        id: 'cscs',
                         message: 'Are you sleeping?',
                         time: '22:01',
                     },
                     {
-                        id: v1(),
+                        id: '2',
                         message: 'Watch this crazy stuff',
                         time: '22:02',
                     },
                 ],
                 '3': [
                     {
-                        id: v1(),
+                        id: '3',
                         message: 'Oh man',
                         time: '22:00',
                     },
                     {
-                        id: v1(),
+                        id: 'cscs',
                         message: 'You so mad',
                         time: '22:01',
                     },
                     {
-                        id: v1(),
+                        id: '3',
                         message: 'Your task in this kata is to implement a function that calculates the sum of the integers inside a string. For example, in the string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog", the sum of the integers is 3635.',
                         time: '22:02',
                     },
                 ],
                 '4': [
                     {
-                        id: v1(),
+                        id: '4',
                         message: 'See you later',
                         time: '22:00',
                     },
                     {
-                        id: v1(),
+                        id: 'cscs',
                         message: 'Don\'t forget about our business',
                         time: '22:01',
                     },
                     {
-                        id: v1(),
+                        id: '4',
                         message: 'I call you later',
                         time: '22:02',
                     },

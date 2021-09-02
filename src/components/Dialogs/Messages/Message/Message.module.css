@@ -1,11 +1,25 @@
 .itemContainer {
     display: flex;
-    flex-direction: row;
     margin: 0.5rem 0;
 }
 
-.messageContainer {
+.userItemContainer {
+    flex-direction: row-reverse;
+}
+
+.userItemContainer > .messageContainer {
+    margin-right: 1rem;
+}
+
+.friendItemContainer {
+    flex-direction: row;
+}
+
+.friendItemContainer > .messageContainer {
     margin-left: 1rem;
+}
+
+.messageContainer {
     position: relative;
     width: 80%;
     max-width: 556px;
@@ -14,6 +28,13 @@
     padding: 1rem;
     border-radius: 10px;
     background-color: #312f2f;
+}
+
+.userName {
+    margin: 0 0 0.5rem 0;
+    color: #872325;
+    font-weight: 600;
+    font-size: 1.1rem;
 }
 
 .message {

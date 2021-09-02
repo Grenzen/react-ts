@@ -15,10 +15,17 @@ export const useRoutes = (
     return (
         <Switch>
             <Route path="/profile">
-                <ProfilePage profile={ profile } dispatch={ dispatch }/>
+                <ProfilePage
+                    profile={ profile }
+                    dispatch={ dispatch }
+                />
             </Route>
             <Route path="/dialogs">
-                <DialogsPage dialogs={ dialogs } dispatch={ dispatch }/>
+                <DialogsPage
+                    dialogs={ dialogs }
+                    user={ profile.user }
+                    dispatch={ dispatch }
+                />
             </Route>
             <Route path="/news">
                 <NewsPage/>
