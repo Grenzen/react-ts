@@ -45,7 +45,7 @@ export type DialogTypes = {
 export type UserMessageTypes = {
     id: string
     message: string
-    time: string
+    time: Date
 }
 
 export type UsersMessagesTypes = {
@@ -55,6 +55,7 @@ export type UsersMessagesTypes = {
 export type DialogsTypes = {
     selectedDialog: DialogTypes | null
     selectedMessages: Array<UserMessageTypes> | null
+    newMessageText: string
     userDialogs: Array<DialogTypes>
     userMessages: UsersMessagesTypes
 }
@@ -82,7 +83,13 @@ export type StateTypes = {
 export type UpdateNewPostTextType = ReturnType<typeof postsActions.updateNewPostText>
 export type AddNewPostType = ReturnType<typeof postsActions.addNewPost>
 export type SelectDialogType = ReturnType<typeof dialogsActions.selectDialog>
-export type ActionType = AddNewPostType | UpdateNewPostTextType | SelectDialogType
+export type UpdateNewMessageTextType = ReturnType<typeof dialogsActions.updateNewMessageText>
+export type AddNewMessageType = ReturnType<typeof dialogsActions.addNewMessage>
+export type ActionType = AddNewPostType
+    | UpdateNewPostTextType
+    | SelectDialogType
+    | UpdateNewMessageTextType
+    | AddNewMessageType
 
 export type StoreType = {
     _state: StateTypes
@@ -137,6 +144,7 @@ export const store: StoreType = {
         dialogs: {
             selectedDialog: null,
             selectedMessages: null,
+            newMessageText: '',
             userDialogs: [
                 {
                     id: '0',
@@ -169,85 +177,85 @@ export const store: StoreType = {
                     {
                         id: '0',
                         message: 'Hi',
-                        time: '22:00',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                     {
                         id: 'cscs',
                         message: 'How are you?',
-                        time: '22:01',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                     {
                         id: '0',
                         message: 'What are you doing now?',
-                        time: '22:02',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                 ],
                 '1': [
                     {
                         id: '1',
                         message: 'Hello',
-                        time: '22:00',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                     {
                         id: 'cscs',
                         message: 'Do you wanna go for walks?',
-                        time: '22:01',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                     {
                         id: '1',
                         message: 'Let\'s meet at five',
-                        time: '22:02',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                 ],
                 '2': [
                     {
                         id: '2',
                         message: 'Yo',
-                        time: '22:00',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                     {
                         id: 'cscs',
                         message: 'Are you sleeping?',
-                        time: '22:01',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                     {
                         id: '2',
                         message: 'Watch this crazy stuff',
-                        time: '22:02',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                 ],
                 '3': [
                     {
                         id: '3',
                         message: 'Oh man',
-                        time: '22:00',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                     {
                         id: 'cscs',
                         message: 'You so mad',
-                        time: '22:01',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                     {
                         id: '3',
                         message: 'Your task in this kata is to implement a function that calculates the sum of the integers inside a string. For example, in the string "The30quick20brown10f0x1203jumps914ov3r1349the102l4zy dog", the sum of the integers is 3635.',
-                        time: '22:02',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                 ],
                 '4': [
                     {
                         id: '4',
                         message: 'See you later',
-                        time: '22:00',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                     {
                         id: 'cscs',
                         message: 'Don\'t forget about our business',
-                        time: '22:01',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                     {
                         id: '4',
                         message: 'I call you later',
-                        time: '22:02',
+                        time: new Date(`2021-07-18T18:07:13.943Z`),
                     },
                 ],
             },
@@ -312,11 +320,29 @@ export const store: StoreType = {
                 this._callSubscriber()
                 break
             case dialogsTypes.SELECT_DIALOG: // выбрать диалог
-                const messagesClone = clone(this._state.dialogs.userMessages[ action.id ])
-                this._state.dialogs.selectedMessages = messagesClone
+                this._state.dialogs.selectedMessages = this._state.dialogs.userMessages[ action.id ]
                 this._state.dialogs.selectedDialog = clone(this._state.dialogs.userDialogs
                     .find(item => item.id === action.id)) || null
                 this._callSubscriber()
+                break
+            case dialogsTypes.UPDATE_NEW_MESSAGE_TEXT: //изменить текст сообщения
+                this._state.dialogs.newMessageText = action.newText
+                this._callSubscriber()
+                break
+            case dialogsTypes.ADD_NEW_MESSAGE:
+                const selectDialogId = this._state.dialogs.selectedDialog?.id
+                if (selectDialogId) {
+                    const newMessage = {
+                        id: action.id,
+                        message: this._state.dialogs.newMessageText,
+                        time: new Date(),
+                    }
+                    const messagesClone = clone(this._state.dialogs.userMessages[ selectDialogId ])
+                    this._state.dialogs.userMessages[ selectDialogId ] = [...messagesClone, newMessage]
+                    this._state.dialogs.selectedMessages = this._state.dialogs.userMessages[ selectDialogId ]
+                    this._state.dialogs.newMessageText = ''
+                    this._callSubscriber()
+                }
         }
     },
 }

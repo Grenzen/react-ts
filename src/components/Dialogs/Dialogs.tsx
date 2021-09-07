@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { ActionType, DialogsTypes, DialogTypes, UserTypes } from '../../redux/state'
 import { Dialog } from './Dialog/Dialog'
 import { Messages } from './Messages/Messages'
@@ -10,21 +10,21 @@ type PropTypes = {
     dispatch: (action: ActionType) => void
 }
 
-export const Dialogs: React.FC<PropTypes> = (
+export const Dialogs: React.FC<PropTypes> = React.memo((
     {
         dialogs,
         user,
         dispatch,
     }) => {
-    const { userDialogs, selectedMessages, selectedDialog } = dialogs
+    const { userDialogs, selectedMessages, selectedDialog, newMessageText } = dialogs
 
-    const mappedDialogs = userDialogs.map((dialog: DialogTypes) => (
+    const mappedDialogs = useMemo(() => userDialogs.map((dialog: DialogTypes) => (
         <Dialog
             dialog={ dialog }
             dispatch={ dispatch }
             key={ dialog.id }
         />
-    ))
+    )), [userDialogs, dispatch])
 
     return (
         <div className={ s.container }>
@@ -38,10 +38,12 @@ export const Dialogs: React.FC<PropTypes> = (
                     ? <Messages
                         messages={ selectedMessages }
                         friend={ selectedDialog }
+                        newMessageText={ newMessageText }
+                        dispatch={ dispatch }
                         user={ user }
                     />
                     : 'Select dialog' }
             </div>
         </div>
     )
-}
+})

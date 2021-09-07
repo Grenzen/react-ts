@@ -10,7 +10,7 @@ type PropTypes = {
     time: Date
 }
 
-export const PostItem: React.FC<PropTypes> = (
+export const PostItem: React.FC<PropTypes> = React.memo((
     {
         avatarUrl,
         text,
@@ -40,4 +40,4 @@ export const PostItem: React.FC<PropTypes> = (
             </div>
         </section>
     )
-}
+})

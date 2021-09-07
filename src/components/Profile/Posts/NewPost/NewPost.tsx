@@ -10,7 +10,7 @@ type PropTypes = {
     dispatch: (action: ActionType) => void
 }
 
-export const NewPost: React.FC<PropTypes> = (
+export const NewPost: React.FC<PropTypes> = React.memo((
     {
         newPostText, dispatch,
     }) => {
@@ -55,4 +55,4 @@ export const NewPost: React.FC<PropTypes> = (
             />
         </form>
     )
-}
+})

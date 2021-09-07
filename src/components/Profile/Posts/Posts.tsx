@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import { NewPost } from './NewPost/NewPost'
 import { PostItem } from './PostItem/PostItem'
 import { ActionType, PostsTypes } from '../../../redux/state'
@@ -11,22 +11,22 @@ type PropTypes = {
     dispatch: (action: ActionType) => void
 }
 
-export const Posts: React.FC<PropTypes> = (
+export const Posts: React.FC<PropTypes> = React.memo((
     {
         avatar, userPosts,
         dispatch,
     }) => {
 
     const { posts, newPostText } = userPosts
-    const mappedPosts = posts.map((post) => (
-        <PostItem
+    const mappedPosts = useMemo(() => posts.map((post) => {
+        return <PostItem
             avatarUrl={ avatar }
             text={ post.text }
             time={ post.time }
             likes={ post.likes }
             key={ post.id }
         />
-    ))
+    }), [posts, avatar])
 
     return (
         <div className={ s.postsContainer }>
@@ -38,4 +38,4 @@ export const Posts: React.FC<PropTypes> = (
             { mappedPosts }
         </div>
     )
-}
+})

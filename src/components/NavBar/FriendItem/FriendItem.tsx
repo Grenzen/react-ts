@@ -7,12 +7,12 @@ type PropTypes = {
     friend: FriendTypes
 }
 
-export const FriendItem:React.FC<PropTypes> = ({ friend }) => {
-   const { name, avatar } = friend
+export const FriendItem: React.FC<PropTypes> = React.memo(({ friend }) => {
+    const { name, avatar } = friend
     return (
-        <div className={s.friendContainer}>
-            <span className={s.friendName}>{ name }</span>
-            <Avatar avatarUrl={ avatar } shape='round' size='medium' />
+        <div className={ s.friendContainer }>
+            <span className={ s.friendName }>{ name }</span>
+            <Avatar avatarUrl={ avatar } shape="round" size="medium"/>
         </div>
     )
-}
+})

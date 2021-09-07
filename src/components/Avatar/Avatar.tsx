@@ -12,21 +12,21 @@ const getRandomColour = () => {
     return Math.round(rand)
 }
 
-export const Avatar:React.FC<AvatarProps> = (
+export const Avatar: React.FC<AvatarProps> = React.memo((
     {
         avatarUrl,
         size = 'medium',
-        shape = 'round'
-    }
+        shape = 'round',
+    },
 ) => {
     const background = avatarUrl ?
-        { backgroundImage: `url(${avatarUrl})` } :
-        { backgroundColor: `rgb(${getRandomColour()}, ${getRandomColour()}, ${getRandomColour()})` }
+        { backgroundImage: `url(${ avatarUrl })` } :
+        { backgroundColor: `rgb(${ getRandomColour() }, ${ getRandomColour() }, ${ getRandomColour() })` }
 
     return (
         <div
-            className={ [s.avatar, s[`${ size }`], s[`${ shape }`]].join(' ') }
+            className={ [s.avatar, s[ `${ size }` ], s[ `${ shape }` ]].join(' ') }
             style={ background }
         ></div>
     )
-}
+})

@@ -8,7 +8,7 @@ type PropTypes = {
     dispatch: (action: ActionType) => void
 }
 
-export const ProfilePage: React.FC<PropTypes> = (
+export const ProfilePage: React.FC<PropTypes> = React.memo((
     {
         profile, dispatch,
     }) => {
@@ -22,4 +22,4 @@ export const ProfilePage: React.FC<PropTypes> = (
             />
         </>
     )
-}
+})

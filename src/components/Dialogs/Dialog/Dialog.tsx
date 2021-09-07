@@ -9,7 +9,7 @@ type PropTypes = {
     dispatch: (action: ActionType) => void
 }
 
-export const Dialog: React.FC<PropTypes> = (
+export const Dialog: React.FC<PropTypes> = React.memo((
     {
         dialog, dispatch,
     }) => {
@@ -30,4 +30,4 @@ export const Dialog: React.FC<PropTypes> = (
             </NavLink>
         </li>
     )
-}
+})

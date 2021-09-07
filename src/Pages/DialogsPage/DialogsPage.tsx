@@ -8,11 +8,11 @@ type PropTypes = {
     dispatch: (action: ActionType) => void
 }
 
-export const DialogsPage: React.FC<PropTypes> = (
+export const DialogsPage: React.FC<PropTypes> = React.memo((
     {
         user,
         dialogs,
-        dispatch
+        dispatch,
     }) => {
     return (
         <>
@@ -23,4 +23,4 @@ export const DialogsPage: React.FC<PropTypes> = (
             />
         </>
     )
-}
+})

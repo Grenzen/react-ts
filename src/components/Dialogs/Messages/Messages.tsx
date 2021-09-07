@@ -1,5 +1,5 @@
-import React from 'react'
-import { DialogTypes, UserMessageTypes, UserTypes } from '../../../redux/state'
+import React, { useMemo } from 'react'
+import { ActionType, DialogTypes, UserMessageTypes, UserTypes } from '../../../redux/state'
 import { Message } from './Message/Message'
 import { NewMessage } from './NewMessage/NewMessage'
 import s from './Messages.module.css'
@@ -8,16 +8,19 @@ import s from './Messages.module.css'
 type PropTypes = {
     messages: Array<UserMessageTypes>
     friend: DialogTypes
+    newMessageText: string
     user: UserTypes
+    dispatch: (action: ActionType) => void
 }
 
-export const Messages: React.FC<PropTypes> = (
+export const Messages: React.FC<PropTypes> = React.memo((
     {
         messages,
         friend,
-        user,
+        newMessageText,
+        user, dispatch,
     }) => {
-    const mappedMessages = messages.map((message: UserMessageTypes, id) => {
+    const mappedMessages = useMemo(() => messages.map((message: UserMessageTypes, id) => {
         const name = message.id === user.id ? user.firstName : friend.name
         const avatar = message.id === user.id ? user.avatar : friend.avatar
         const userMode = message.id === user.id
@@ -28,12 +31,16 @@ export const Messages: React.FC<PropTypes> = (
             message={ message }
             avatar={ avatar }
         />
-    })
+    }), [messages, user, friend])
 
     return (
         <div className={ s.messagesContainer }>
             { mappedMessages }
-            <NewMessage/>
+            <NewMessage
+                newMessageText={ newMessageText }
+                userId={ user.id }
+                dispatch={ dispatch }
+            />
         </div>
     )
-}
+})

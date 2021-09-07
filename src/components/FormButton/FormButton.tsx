@@ -8,20 +8,20 @@ interface FormButtonProps {
     position?: 'start' | 'end' | 'center' | 'stretch'
 }
 
-export const FormButton:React.FC<FormButtonProps> = (
+export const FormButton: React.FC<FormButtonProps> = React.memo((
     {
-       primary = true,
-       value,
-       size = 'medium',
-       position = 'end'
-    }
+        primary = true,
+        value,
+        size = 'medium',
+        position = 'end',
+    },
 ) => {
     const mode = primary ? 'primary' : 'secondary'
     return (
         <input
-            className={[s.formButton, s[`${ mode }`], s[`${ size }`], s[`${ position }`]].join(' ')}
+            className={ [s.formButton, s[ `${ mode }` ], s[ `${ size }` ], s[ `${ position }` ]].join(' ') }
             type="submit"
             value={ value }
         />
     )
-}
+})

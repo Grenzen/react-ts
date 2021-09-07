@@ -1,15 +1,28 @@
-import React, { FormEvent, useRef } from 'react'
+import React, { ChangeEvent, FormEvent } from 'react'
 import s from './NewMessage.module.css'
 import { FormButton } from '../../../FormButton/FormButton'
+import { ActionType } from '../../../../redux/state'
+import { addNewMessage, updateNewMessageText } from '../../../../store/actions/dialogs'
 
-export const NewMessage = () => {
-    const messageRef = useRef<HTMLTextAreaElement>(null)
+type NewMessageType = {
+    newMessageText: string
+    userId: string
+    dispatch: (action: ActionType) => void
+}
+
+export const NewMessage: React.FC<NewMessageType> = React.memo((
+    {
+        newMessageText, dispatch, userId,
+    }) => {
 
     const submitHandler = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        const date = new Date()
-        console.log((messageRef.current as HTMLTextAreaElement).value)
-        console.log(date)
+        dispatch(addNewMessage(userId))
+        // console.log((messageRef.current as HTMLTextAreaElement).value)
+    }
+
+    const changeHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        dispatch(updateNewMessageText(event.currentTarget.value))
     }
 
     return (
@@ -19,13 +32,14 @@ export const NewMessage = () => {
                 onSubmit={ submitHandler }
             >
                 <textarea
-                    ref={ messageRef }
                     className={ s.newMessageText }
                     rows={ 1 }
+                    value={ newMessageText }
                     placeholder="Write message..."
+                    onChange={ changeHandler }
                 />
                 <FormButton value="Send" position="stretch" primary={ true } size="medium"/>
             </form>
         </div>
     )
-}
+})

@@ -11,7 +11,7 @@ type PropTypes = {
     dispatch: (action: ActionType) => void
 }
 
-export const Profile: React.FC<PropTypes> = (
+export const Profile: React.FC<PropTypes> = React.memo((
     {
         user,
         posts,
@@ -31,4 +31,4 @@ export const Profile: React.FC<PropTypes> = (
             />
         </main>
     )
-}
+})
