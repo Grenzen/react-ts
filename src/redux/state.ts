@@ -4,22 +4,22 @@ import { UserType } from '../store/reducers/user'
 import { FriendsType } from '../store/reducers/friends'
 // TS
 
-export type ProfileType = {
+type ProfileType = {
     user: UserType
     posts: PostsType
 }
 
-export type NavbarType = {
+type NavbarType = {
     friends: FriendsType
 }
 
-export type StateType = {
+type StateType = {
     profile: ProfileType
     dialogs: DialogsType
     navbar: NavbarType
 }
 
-export type StoreType = {
+type StoreType = {
     _state: StateType
     _callSubscriber: () => void
     getState: () => StateType
@@ -27,7 +27,7 @@ export type StoreType = {
     dispatch: (action: ActionDialogsType | ActionPostsType) => void
 }
 
-export const store: StoreType = {
+const store: StoreType = {
     _state: {
         profile: {
             user: {

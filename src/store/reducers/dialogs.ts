@@ -1,6 +1,5 @@
 import * as types from '../types/dialogs'
 import * as dialogsActions from '../actions/dialogs'
-import clone from 'clone-deep'
 
 export type DialogType = {
     id: string
@@ -154,13 +153,16 @@ const initialState: DialogsType = {
 export const dialogsReducer = (state: DialogsType = initialState, action: ActionDialogsType): DialogsType => {
     switch (action.type) {
         case types.SELECT_DIALOG: // выбрать диалог
-            state.selectedMessages = state.userMessages[ action.id ]
-            state.selectedDialog = clone(state.userDialogs
-                .find(item => item.id === action.id)) || null
-            return state
+            return {
+                ...state,
+                selectedMessages: state.userMessages[ action.id ],
+                selectedDialog: state.userDialogs.find(item => item.id === action.id) || null,
+            }
         case types.UPDATE_NEW_MESSAGE_TEXT: //изменить текст сообщения
-            state.newMessageText = action.newText
-            return state
+            return {
+                ...state,
+                newMessageText: action.newText,
+            }
         case types.ADD_NEW_MESSAGE: //добавить новое сообщение
             const selectDialogId = state.selectedDialog?.id
             if (selectDialogId) {
@@ -169,10 +171,16 @@ export const dialogsReducer = (state: DialogsType = initialState, action: Action
                     message: state.newMessageText,
                     time: new Date(),
                 }
-                const messagesClone = clone(state.userMessages[ selectDialogId ])
-                state.userMessages[ selectDialogId ] = [...messagesClone, newMessage]
-                state.selectedMessages = state.userMessages[ selectDialogId ]
-                state.newMessageText = ''
+                const newMessages = [...state.userMessages[ selectDialogId ], newMessage]
+                return {
+                    ...state,
+                    userMessages: {
+                        ...state.userMessages,
+                        [ selectDialogId ]: newMessages,
+                    },
+                    selectedMessages: newMessages,
+                    newMessageText: '',
+                }
             }
             return state
         default:

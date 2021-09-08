@@ -3,16 +3,14 @@ import { NewPost } from './NewPost/NewPost'
 import { PostItem } from './PostItem/PostItem'
 import s from './Posts.module.css'
 import { PostsType } from '../../../store/reducers/posts'
+import { MapDispatchPropType } from '../../../Pages/ProfilePage/ProfilePage'
 
-
-type PropTypes = {
+type PostsPropType = {
     avatar: string
     userPosts: PostsType
-    changeNewPostTextCallback: (newText: string) => void
-    addNewPostCallback: () => void
-}
+} & MapDispatchPropType
 
-export const Posts: React.FC<PropTypes> = React.memo((
+export const Posts: React.FC<PostsPropType> = React.memo((
     {
         avatar, userPosts,
         changeNewPostTextCallback, addNewPostCallback,

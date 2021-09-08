@@ -1,35 +1,37 @@
 import React from 'react'
 import { Dialogs } from '../../components/Dialogs/Dialogs'
-import { DialogsType } from '../../store/reducers/dialogs'
-import { UserType } from '../../store/reducers/user'
-import { AppDispatch } from '../../store'
 import { addNewMessage, selectDialog, updateNewMessageText } from '../../store/actions/dialogs'
+import { UserType } from '../../store/reducers/user'
+import { RootState } from '../../store'
+import { DialogsType } from '../../store/reducers/dialogs'
+import { connect } from 'react-redux'
 
-type PropTypes = {
-    dialogs: DialogsType
+export type MapStatePropType = {
     user: UserType
-    dispatch: AppDispatch
+    dialogs: DialogsType
 }
 
-export const DialogsPage: React.FC<PropTypes> = React.memo((
-    {
-        user,
-        dialogs,
-        dispatch,
-    }) => {
-    const selectDialogCallback = (id: string) => dispatch(selectDialog(id))
-    const changeNewMessageTextCallback = (newText: string) => dispatch(updateNewMessageText(newText))
-    const addNewMessageToDialogCallback = () => dispatch(addNewMessage(user.id))
+export type MapDispatchPropType = {
+    selectDialogCallback: (dialogId: string) => void
+    changeNewMessageTextCallback: (newText: string) => void
+    addNewMessageToDialogCallback: (userId: string) => void
+}
 
-    return (
-        <>
-            <Dialogs
-                user={ user }
-                dialogs={ dialogs }
-                selectDialogCallback={ selectDialogCallback }
-                changeNewMessageTextCallback={ changeNewMessageTextCallback }
-                addNewMessageToDialogCallback={ addNewMessageToDialogCallback }
-            />
-        </>
-    )
-})
+const mapStateToProps = (state: RootState): MapStatePropType => {
+    return {
+        user: state.user,
+        dialogs: state.dialogs,
+    }
+}
+
+const mapDispatchToProps = (dispatch: any): MapDispatchPropType => {
+    return {
+        selectDialogCallback: (dialogId: string) => dispatch(selectDialog(dialogId)),
+        changeNewMessageTextCallback: (newText: string) => dispatch(updateNewMessageText(newText)),
+        addNewMessageToDialogCallback: (userId) => dispatch(addNewMessage(userId)),
+    }
+}
+
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs)
+
+export const DialogsPage = React.memo(() => <DialogsContainer/>)

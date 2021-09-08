@@ -1,21 +1,21 @@
 import './index.css'
-import { RootState, store } from './store'
+import { store } from './store'
 import ReactDOM from 'react-dom'
 import React from 'react'
 import { App } from './App'
+import { Provider } from 'react-redux'
 
-const rerenderTree = (state: RootState) => {
+const rerenderTree = () => {
     ReactDOM.render(
         <React.StrictMode>
-            <App
-                state={ state }
-                dispatch={ store.dispatch.bind(store) }
-            />
+            <Provider store={ store }>
+                <App state={ store.getState() }/>
+            </Provider>
         </React.StrictMode>,
         document.getElementById('root'),
     )
 }
-rerenderTree(store.getState())
+rerenderTree()
 store.subscribe(() => {
-    rerenderTree(store.getState())
+    rerenderTree()
 })

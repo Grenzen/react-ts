@@ -1,6 +1,5 @@
 import * as types from '../types/posts'
 import * as postsActions from '../actions/posts'
-import clone from 'clone-deep'
 
 export type PostType = {
     id: string
@@ -48,19 +47,22 @@ const initialState: PostsType = {
 export const postsReducer = (state: PostsType = initialState, action: ActionPostsType): PostsType => {
     switch (action.type) {
         case types.ADD_NEW_POST: // добавить новый пост на страницу профиля
-            const postsClone = clone(state.posts)
             const newPost = {
                 id: action.postId,
                 text: state.newPostText,
                 time: action.postTime,
                 likes: 0,
             }
-            state.posts = [newPost, ...postsClone]
-            state.newPostText = ''
-            return state
+            return {
+                ...state,
+                posts: [newPost, ...state.posts],
+                newPostText: '',
+            }
         case types.UPDATE_NEW_POST_TEXT: // изменить текст поста на странице профиля
-            state.newPostText = action.newText
-            return state
+            return {
+                ...state,
+                newPostText: action.newText,
+            }
         default:
             return state
     }

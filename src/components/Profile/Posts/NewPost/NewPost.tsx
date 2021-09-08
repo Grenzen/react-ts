@@ -1,15 +1,13 @@
 import React, { FormEvent, ChangeEvent, KeyboardEvent } from 'react'
 import { FormButton } from '../../../FormButton/FormButton'
 import s from './NewPost.module.css'
+import { MapDispatchPropType } from '../../../../Pages/ProfilePage/ProfilePage'
 
-
-type PropTypes = {
+type NewPostType = {
     newPostText: string
-    addNewPostCallback: () => void
-    changeNewPostTextCallback: (newText: string) => void
-}
+} & MapDispatchPropType
 
-export const NewPost: React.FC<PropTypes> = React.memo((
+export const NewPost: React.FC<NewPostType> = React.memo((
     {
         newPostText,
         changeNewPostTextCallback, addNewPostCallback,
@@ -26,9 +24,8 @@ export const NewPost: React.FC<PropTypes> = React.memo((
         }
     }
 
-    const onChangePostText = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const onChangePostText = (event: ChangeEvent<HTMLTextAreaElement>) =>
         changeNewPostTextCallback(event.currentTarget.value)
-    }
 
     return (
         <form

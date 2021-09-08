@@ -11,7 +11,7 @@ type PropTypes = {
     newMessageText: string
     user: UserType
     changeNewMessageTextCallback: (newText: string) => void
-    addNewMessageToDialogCallback: () => void
+    addNewMessageToDialogCallback: (userId: string) => void
 }
 
 export const Messages: React.FC<PropTypes> = React.memo((
@@ -33,13 +33,15 @@ export const Messages: React.FC<PropTypes> = React.memo((
         />
     }), [messages, user, friend])
 
+    const triggerAddNewMessage = () => addNewMessageToDialogCallback(user.id)
+
     return (
         <div className={ s.messagesContainer }>
             { mappedMessages }
             <NewMessage
                 newMessageText={ newMessageText }
                 changeNewMessageTextCallback={ changeNewMessageTextCallback }
-                addNewMessageToDialogCallback={ addNewMessageToDialogCallback }
+                triggerAddNewMessage={ triggerAddNewMessage }
             />
         </div>
     )

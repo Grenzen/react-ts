@@ -2,17 +2,11 @@ import React from 'react'
 import { UserInfo } from './UserInfo/UserInfo'
 import { Posts } from './Posts/Posts'
 import s from './Profile.module.css'
-import { PostsType } from '../../store/reducers/posts'
-import { UserType } from '../../store/reducers/user'
+import { MapDispatchPropType, MapStatePropType } from '../../Pages/ProfilePage/ProfilePage'
 
-type PropTypes = {
-    user: UserType
-    posts: PostsType
-    changeNewPostTextCallback: (newText: string) => void
-    addNewPostCallback: () => void
-}
+type ProfilePropType = MapDispatchPropType & MapStatePropType
 
-export const Profile: React.FC<PropTypes> = React.memo((
+export const Profile: React.FC<ProfilePropType> = React.memo((
     {
         user, posts,
         changeNewPostTextCallback, addNewPostCallback,

@@ -3,14 +3,14 @@ import { Avatar } from '../../../Avatar/Avatar'
 import s from './PostItem.module.css'
 
 
-type PropTypes = {
+type PostItemType = {
     avatarUrl: string
     text: string
     likes: number
     time: Date
 }
 
-export const PostItem: React.FC<PropTypes> = React.memo((
+export const PostItem: React.FC<PostItemType> = React.memo((
     {
         avatarUrl,
         text,

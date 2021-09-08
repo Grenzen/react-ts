@@ -5,19 +5,19 @@ import { FormButton } from '../../../FormButton/FormButton'
 type NewMessageType = {
     newMessageText: string
     changeNewMessageTextCallback: (newText: string) => void
-    addNewMessageToDialogCallback: () => void
+    triggerAddNewMessage: () => void
 }
 
 export const NewMessage: React.FC<NewMessageType> = React.memo((
     {
         newMessageText,
         changeNewMessageTextCallback,
-        addNewMessageToDialogCallback,
+        triggerAddNewMessage,
     }) => {
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        addNewMessageToDialogCallback()
+        triggerAddNewMessage()
     }
 
     const onChangeMessageText = (event: ChangeEvent<HTMLTextAreaElement>) => {

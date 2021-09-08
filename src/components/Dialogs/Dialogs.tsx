@@ -2,16 +2,10 @@ import React, { useMemo } from 'react'
 import { Dialog } from './Dialog/Dialog'
 import { Messages } from './Messages/Messages'
 import s from './Dialogs.module.css'
-import { DialogsType, DialogType } from '../../store/reducers/dialogs'
-import { UserType } from '../../store/reducers/user'
+import { DialogType } from '../../store/reducers/dialogs'
+import { MapDispatchPropType, MapStatePropType } from '../../Pages/DialogsPage/DialogsPage'
 
-type PropTypes = {
-    dialogs: DialogsType
-    user: UserType
-    selectDialogCallback: (id: string) => void
-    changeNewMessageTextCallback: (newText: string) => void
-    addNewMessageToDialogCallback: () => void
-}
+type PropTypes = MapStatePropType & MapDispatchPropType
 
 export const Dialogs: React.FC<PropTypes> = React.memo((
     {
