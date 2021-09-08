@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/social-network/static/css/main.5cc77e84.chunk.css",
-    "main.js": "/social-network/static/js/main.4bd65234.chunk.js",
-    "main.js.map": "/social-network/static/js/main.4bd65234.chunk.js.map",
+    "main.js": "/social-network/static/js/main.3d3d536d.chunk.js",
+    "main.js.map": "/social-network/static/js/main.3d3d536d.chunk.js.map",
     "runtime-main.js": "/social-network/static/js/runtime-main.3f5f4189.js",
     "runtime-main.js.map": "/social-network/static/js/runtime-main.3f5f4189.js.map",
-    "static/js/2.aac2211a.chunk.js": "/social-network/static/js/2.aac2211a.chunk.js",
-    "static/js/2.aac2211a.chunk.js.map": "/social-network/static/js/2.aac2211a.chunk.js.map",
+    "static/js/2.de1c1983.chunk.js": "/social-network/static/js/2.de1c1983.chunk.js",
+    "static/js/2.de1c1983.chunk.js.map": "/social-network/static/js/2.de1c1983.chunk.js.map",
     "index.html": "/social-network/index.html",
     "static/css/main.5cc77e84.chunk.css.map": "/social-network/static/css/main.5cc77e84.chunk.css.map",
-    "static/js/2.aac2211a.chunk.js.LICENSE.txt": "/social-network/static/js/2.aac2211a.chunk.js.LICENSE.txt"
+    "static/js/2.de1c1983.chunk.js.LICENSE.txt": "/social-network/static/js/2.de1c1983.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3f5f4189.js",
-    "static/js/2.aac2211a.chunk.js",
+    "static/js/2.de1c1983.chunk.js",
     "static/css/main.5cc77e84.chunk.css",
-    "static/js/main.4bd65234.chunk.js"
+    "static/js/main.3d3d536d.chunk.js"
   ]
 }
