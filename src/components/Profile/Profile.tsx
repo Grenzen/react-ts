@@ -1,14 +1,15 @@
 import React from 'react'
 import { UserInfo } from './UserInfo/UserInfo'
-import { ActionType, PostsTypes, UserTypes } from '../../redux/state'
+import { PostsTypes, UserTypes } from '../../redux/state'
 import { Posts } from './Posts/Posts'
 import s from './Profile.module.css'
+import { ActionPostsType } from '../../store/reducers/posts'
 
 
 type PropTypes = {
     user: UserTypes
     posts: PostsTypes
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionPostsType) => void
 }
 
 export const Profile: React.FC<PropTypes> = React.memo((

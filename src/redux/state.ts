@@ -1,9 +1,11 @@
-import { v1 } from 'uuid'
-import clone from 'clone-deep'
-import * as postsTypes from '../store/types/posts'
-import * as dialogsTypes from '../store/types/dialogs'
-import * as postsActions from '../store/actions/posts'
-import * as dialogsActions from '../store/actions/dialogs'
+// import { v1 } from 'uuid'
+// import clone from 'clone-deep'
+// import * as postsTypes from '../store/types/posts'
+// import * as dialogsTypes from '../store/types/dialogs'
+// import * as postsActions from '../store/actions/posts'
+// import * as dialogsActions from '../store/actions/dialogs'
+import { ActionDialogsType, dialogsReducer } from '../store/reducers/dialogs'
+import { ActionPostsType, postsReducer } from '../store/reducers/posts'
 // TS
 export type UserTypes = {
     id: string
@@ -80,23 +82,12 @@ export type StateTypes = {
     navbar: NavbarTypes
 }
 
-export type UpdateNewPostTextType = ReturnType<typeof postsActions.updateNewPostText>
-export type AddNewPostType = ReturnType<typeof postsActions.addNewPost>
-export type SelectDialogType = ReturnType<typeof dialogsActions.selectDialog>
-export type UpdateNewMessageTextType = ReturnType<typeof dialogsActions.updateNewMessageText>
-export type AddNewMessageType = ReturnType<typeof dialogsActions.addNewMessage>
-export type ActionType = AddNewPostType
-    | UpdateNewPostTextType
-    | SelectDialogType
-    | UpdateNewMessageTextType
-    | AddNewMessageType
-
 export type StoreType = {
     _state: StateTypes
     _callSubscriber: () => void
     getState: () => StateTypes
     subscribe: (observer: () => void) => void
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionDialogsType | ActionPostsType) => void
 }
 
 // Post Function
@@ -302,47 +293,8 @@ export const store: StoreType = {
     },
 
     dispatch(action) {
-        switch (action.type) {
-            case postsTypes.ADD_NEW_POST: // добавить новый пост на страницу профиля
-                const postsClone = clone(this._state.profile.posts.posts)
-                const newPost = {
-                    id: v1(),
-                    text: this._state.profile.posts.newPostText,
-                    time: new Date(),
-                    likes: 0,
-                }
-                this._state.profile.posts.posts = [newPost, ...postsClone]
-                this._state.profile.posts.newPostText = ''
-                this._callSubscriber()
-                break
-            case postsTypes.UPDATE_NEW_POST_TEXT: // изменить текст поста на странице профиля
-                this._state.profile.posts.newPostText = action.newText
-                this._callSubscriber()
-                break
-            case dialogsTypes.SELECT_DIALOG: // выбрать диалог
-                this._state.dialogs.selectedMessages = this._state.dialogs.userMessages[ action.id ]
-                this._state.dialogs.selectedDialog = clone(this._state.dialogs.userDialogs
-                    .find(item => item.id === action.id)) || null
-                this._callSubscriber()
-                break
-            case dialogsTypes.UPDATE_NEW_MESSAGE_TEXT: //изменить текст сообщения
-                this._state.dialogs.newMessageText = action.newText
-                this._callSubscriber()
-                break
-            case dialogsTypes.ADD_NEW_MESSAGE:
-                const selectDialogId = this._state.dialogs.selectedDialog?.id
-                if (selectDialogId) {
-                    const newMessage = {
-                        id: action.id,
-                        message: this._state.dialogs.newMessageText,
-                        time: new Date(),
-                    }
-                    const messagesClone = clone(this._state.dialogs.userMessages[ selectDialogId ])
-                    this._state.dialogs.userMessages[ selectDialogId ] = [...messagesClone, newMessage]
-                    this._state.dialogs.selectedMessages = this._state.dialogs.userMessages[ selectDialogId ]
-                    this._state.dialogs.newMessageText = ''
-                    this._callSubscriber()
-                }
-        }
+        this._state.profile.posts = postsReducer(this._state.profile.posts, action as ActionPostsType)
+        this._state.dialogs = dialogsReducer(this._state.dialogs, action as ActionDialogsType)
+        this._callSubscriber()
     },
 }

@@ -1,11 +1,12 @@
 import React from 'react'
-import { ActionType, ProfileTypes } from '../../redux/state'
+import { ProfileTypes } from '../../redux/state'
 import { Profile } from '../../components/Profile/Profile'
+import { ActionPostsType } from '../../store/reducers/posts'
 
 
 type PropTypes = {
     profile: ProfileTypes
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionPostsType) => void
 }
 
 export const ProfilePage: React.FC<PropTypes> = React.memo((

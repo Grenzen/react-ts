@@ -1,12 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import s from './Dialog.module.css'
-import { ActionType, DialogTypes } from '../../../redux/state'
+import { DialogTypes } from '../../../redux/state'
 import { selectDialog } from '../../../store/actions/dialogs'
+import { ActionDialogsType } from '../../../store/reducers/dialogs'
 
 type PropTypes = {
     dialog: DialogTypes
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionDialogsType) => void
 }
 
 export const Dialog: React.FC<PropTypes> = React.memo((

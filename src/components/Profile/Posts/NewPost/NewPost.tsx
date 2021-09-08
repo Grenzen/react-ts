@@ -1,13 +1,13 @@
 import React, { FormEvent, ChangeEvent, KeyboardEvent } from 'react'
 import { FormButton } from '../../../FormButton/FormButton'
 import s from './NewPost.module.css'
-import { ActionType } from '../../../../redux/state'
 import * as actions from '../../../../store/actions/posts'
+import { ActionPostsType } from '../../../../store/reducers/posts'
 
 
 type PropTypes = {
     newPostText: string
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionPostsType) => void
 }
 
 export const NewPost: React.FC<PropTypes> = React.memo((

@@ -1,13 +1,13 @@
 import React, { ChangeEvent, FormEvent } from 'react'
 import s from './NewMessage.module.css'
 import { FormButton } from '../../../FormButton/FormButton'
-import { ActionType } from '../../../../redux/state'
 import { addNewMessage, updateNewMessageText } from '../../../../store/actions/dialogs'
+import { ActionDialogsType } from '../../../../store/reducers/dialogs'
 
 type NewMessageType = {
     newMessageText: string
     userId: string
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionDialogsType) => void
 }
 
 export const NewMessage: React.FC<NewMessageType> = React.memo((

@@ -1,14 +1,15 @@
 import React, { useMemo } from 'react'
 import { NewPost } from './NewPost/NewPost'
 import { PostItem } from './PostItem/PostItem'
-import { ActionType, PostsTypes } from '../../../redux/state'
+import { PostsTypes } from '../../../redux/state'
 import s from './Posts.module.css'
+import { ActionPostsType } from '../../../store/reducers/posts'
 
 
 type PropTypes = {
     avatar: string
     userPosts: PostsTypes
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionPostsType) => void
 }
 
 export const Posts: React.FC<PropTypes> = React.memo((

@@ -1,13 +1,14 @@
 import React, { useMemo } from 'react'
-import { ActionType, DialogsTypes, DialogTypes, UserTypes } from '../../redux/state'
+import { DialogsTypes, DialogTypes, UserTypes } from '../../redux/state'
 import { Dialog } from './Dialog/Dialog'
 import { Messages } from './Messages/Messages'
 import s from './Dialogs.module.css'
+import { ActionDialogsType } from '../../store/reducers/dialogs'
 
 type PropTypes = {
     dialogs: DialogsTypes
     user: UserTypes
-    dispatch: (action: ActionType) => void
+    dispatch: (action: ActionDialogsType) => void
 }
 
 export const Dialogs: React.FC<PropTypes> = React.memo((
