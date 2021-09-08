@@ -1,51 +1,47 @@
 import React, { FormEvent, ChangeEvent, KeyboardEvent } from 'react'
 import { FormButton } from '../../../FormButton/FormButton'
 import s from './NewPost.module.css'
-import * as actions from '../../../../store/actions/posts'
-import { AppDispatch } from '../../../../store'
 
 
 type PropTypes = {
     newPostText: string
-    dispatch: AppDispatch
+    addNewPostCallback: () => void
+    changeNewPostTextCallback: (newText: string) => void
 }
 
 export const NewPost: React.FC<PropTypes> = React.memo((
     {
-        newPostText, dispatch,
+        newPostText,
+        changeNewPostTextCallback, addNewPostCallback,
     }) => {
 
-    const createNewPost = () => {
-        dispatch(actions.addNewPost())
-    }
-
-    const submitHandler = (event: FormEvent<HTMLFormElement>) => {
+    const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault()
-        createNewPost()
+        addNewPostCallback()
     }
-    const onEnterPressHandler = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    const onEnterPress = (event: KeyboardEvent<HTMLTextAreaElement>) => {
         if (event.key === 'Enter') {
             event.preventDefault()
-            createNewPost()
+            addNewPostCallback()
         }
     }
 
-    const changePostTextHandler = (event: ChangeEvent<HTMLTextAreaElement>) => {
-        dispatch(actions.updateNewPostText(event.currentTarget.value))
+    const onChangePostText = (event: ChangeEvent<HTMLTextAreaElement>) => {
+        changeNewPostTextCallback(event.currentTarget.value)
     }
 
     return (
         <form
             className={ s.newPostContainer }
-            onSubmit={ submitHandler }
+            onSubmit={ onSubmit }
         >
             <textarea
                 className={ s.text }
                 rows={ 5 }
                 value={ newPostText }
                 placeholder="Write text..."
-                onChange={ changePostTextHandler }
-                onKeyPress={ onEnterPressHandler }
+                onChange={ onChangePostText }
+                onKeyPress={ onEnterPress }
             />
             <FormButton
                 value="Add post"

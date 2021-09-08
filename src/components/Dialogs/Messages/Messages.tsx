@@ -4,23 +4,21 @@ import { NewMessage } from './NewMessage/NewMessage'
 import s from './Messages.module.css'
 import { DialogType, UserMessageType } from '../../../store/reducers/dialogs'
 import { UserType } from '../../../store/reducers/user'
-import { AppDispatch } from '../../../store'
-
 
 type PropTypes = {
     messages: Array<UserMessageType>
     friend: DialogType
     newMessageText: string
     user: UserType
-    dispatch: AppDispatch
+    changeNewMessageTextCallback: (newText: string) => void
+    addNewMessageToDialogCallback: () => void
 }
 
 export const Messages: React.FC<PropTypes> = React.memo((
     {
-        messages,
-        friend,
-        newMessageText,
-        user, dispatch,
+        messages, friend, newMessageText,
+        user,
+        changeNewMessageTextCallback, addNewMessageToDialogCallback,
     }) => {
     const mappedMessages = useMemo(() => messages.map((message: UserMessageType, id) => {
         const name = message.id === user.id ? user.firstName : friend.name
@@ -40,8 +38,8 @@ export const Messages: React.FC<PropTypes> = React.memo((
             { mappedMessages }
             <NewMessage
                 newMessageText={ newMessageText }
-                userId={ user.id }
-                dispatch={ dispatch }
+                changeNewMessageTextCallback={ changeNewMessageTextCallback }
+                addNewMessageToDialogCallback={ addNewMessageToDialogCallback }
             />
         </div>
     )

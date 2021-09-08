@@ -4,29 +4,30 @@ import { Messages } from './Messages/Messages'
 import s from './Dialogs.module.css'
 import { DialogsType, DialogType } from '../../store/reducers/dialogs'
 import { UserType } from '../../store/reducers/user'
-import { AppDispatch } from '../../store'
 
 type PropTypes = {
     dialogs: DialogsType
     user: UserType
-    dispatch: AppDispatch
+    selectDialogCallback: (id: string) => void
+    changeNewMessageTextCallback: (newText: string) => void
+    addNewMessageToDialogCallback: () => void
 }
 
 export const Dialogs: React.FC<PropTypes> = React.memo((
     {
-        dialogs,
-        user,
-        dispatch,
+        dialogs, user,
+        selectDialogCallback, changeNewMessageTextCallback,
+        addNewMessageToDialogCallback,
     }) => {
     const { userDialogs, selectedMessages, selectedDialog, newMessageText } = dialogs
 
     const mappedDialogs = useMemo(() => userDialogs.map((dialog: DialogType) => (
         <Dialog
             dialog={ dialog }
-            dispatch={ dispatch }
+            selectDialogCallback={ selectDialogCallback }
             key={ dialog.id }
         />
-    )), [userDialogs, dispatch])
+    )), [userDialogs, selectDialogCallback])
 
     return (
         <div className={ s.container }>
@@ -41,8 +42,9 @@ export const Dialogs: React.FC<PropTypes> = React.memo((
                         messages={ selectedMessages }
                         friend={ selectedDialog }
                         newMessageText={ newMessageText }
-                        dispatch={ dispatch }
                         user={ user }
+                        changeNewMessageTextCallback={ changeNewMessageTextCallback }
+                        addNewMessageToDialogCallback={ addNewMessageToDialogCallback }
                     />
                     : 'Select dialog' }
             </div>

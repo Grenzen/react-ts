@@ -4,20 +4,18 @@ import { Posts } from './Posts/Posts'
 import s from './Profile.module.css'
 import { PostsType } from '../../store/reducers/posts'
 import { UserType } from '../../store/reducers/user'
-import { AppDispatch } from '../../store'
-
 
 type PropTypes = {
     user: UserType
     posts: PostsType
-    dispatch: AppDispatch
+    changeNewPostTextCallback: (newText: string) => void
+    addNewPostCallback: () => void
 }
 
 export const Profile: React.FC<PropTypes> = React.memo((
     {
-        user,
-        posts,
-        dispatch,
+        user, posts,
+        changeNewPostTextCallback, addNewPostCallback,
     }) => {
     return (
         <main className={ s.profile }>
@@ -29,7 +27,8 @@ export const Profile: React.FC<PropTypes> = React.memo((
             <Posts
                 avatar={ user.avatar }
                 userPosts={ posts }
-                dispatch={ dispatch }
+                addNewPostCallback={ addNewPostCallback }
+                changeNewPostTextCallback={ changeNewPostTextCallback }
             />
         </main>
     )

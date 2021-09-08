@@ -1,26 +1,23 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import s from './Dialog.module.css'
-import { selectDialog } from '../../../store/actions/dialogs'
 import { DialogType } from '../../../store/reducers/dialogs'
-import { AppDispatch } from '../../../store'
 
 type PropTypes = {
     dialog: DialogType
-    dispatch: AppDispatch
+    selectDialogCallback: (id: string) => void
 }
 
 export const Dialog: React.FC<PropTypes> = React.memo((
     {
-        dialog, dispatch,
+        dialog, selectDialogCallback,
     }) => {
-    const itemClassName = `${ s.item }`
-    const onClickHandler = () => dispatch(selectDialog(dialog.id))
+    const onSelectDialog = () => selectDialogCallback(dialog.id)
 
     return (
         <li
-            className={ itemClassName }
-            onClick={ onClickHandler }
+            className={ s.item }
+            onClick={ onSelectDialog }
         >
             <NavLink
                 className={ s.link }
