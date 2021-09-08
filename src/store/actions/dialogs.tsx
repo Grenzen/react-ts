@@ -13,4 +13,5 @@ export const updateNewMessageText = (newText: string) => ({
 export const addNewMessage = (id: string) => ({
     type: types.ADD_NEW_MESSAGE,
     id,
+    date: new Date(),
 } as const)

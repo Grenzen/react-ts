@@ -169,7 +169,7 @@ export const dialogsReducer = (state: DialogsType = initialState, action: Action
                 const newMessage = {
                     id: action.id,
                     message: state.newMessageText,
-                    time: new Date(),
+                    time: action.date,
                 }
                 const newMessages = [...state.userMessages[ selectDialogId ], newMessage]
                 return {
