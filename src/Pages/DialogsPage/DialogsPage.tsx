@@ -1,11 +1,11 @@
 import React from 'react'
-import { DialogsTypes, UserTypes } from '../../redux/state'
 import { Dialogs } from '../../components/Dialogs/Dialogs'
-import { ActionDialogsType } from '../../store/reducers/dialogs'
+import { ActionDialogsType, DialogsType } from '../../store/reducers/dialogs'
+import { UserType } from '../../store/reducers/user'
 
 type PropTypes = {
-    dialogs: DialogsTypes
-    user: UserTypes
+    dialogs: DialogsType
+    user: UserType
     dispatch: (action: ActionDialogsType) => void
 }
 

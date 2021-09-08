@@ -1,11 +1,11 @@
 import React from 'react'
-import { UserTypes } from '../../../redux/state'
 import s from './UserInfo.module.css'
 import { Avatar } from '../../Avatar/Avatar'
+import { UserType } from '../../../store/reducers/user'
 
 
 type PropTypes = {
-    user: UserTypes
+    user: UserType
 }
 
 export const UserInfo: React.FC<PropTypes> = React.memo(({ user }) => {

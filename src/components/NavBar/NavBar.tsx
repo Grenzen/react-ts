@@ -1,21 +1,21 @@
 import React, { useMemo } from 'react'
-import { NavbarTypes } from '../../redux/state'
 import { NavLink } from 'react-router-dom'
 import { FriendItem } from './FriendItem/FriendItem'
 import s from './NavBar.module.css'
+import { FriendsType } from '../../store/reducers/friends'
 
 
-type NavItemTypes = {
+type NavItemType = {
     id: number
     name: string
 }
-type NavTypes = Array<NavItemTypes>
+type NavType = Array<NavItemType>
 
-type PropTypes = {
-    navbar: NavbarTypes
+type PropType = {
+    friends: FriendsType
 }
 
-const nav: NavTypes = [
+const nav: NavType = [
     { id: 0, name: 'Profile' },
     { id: 1, name: 'Dialogs' },
     { id: 2, name: 'News' },
@@ -23,7 +23,7 @@ const nav: NavTypes = [
     { id: 4, name: 'Settings' },
 ]
 
-export const NavBar: React.FC<PropTypes> = React.memo(({ navbar }) => {
+export const NavBar: React.FC<PropType> = React.memo(({ friends }) => {
     const mappedNavigation = useMemo(() => nav.map((item) => (
         <div className={ s.item } key={ item.id }>
             <NavLink
@@ -34,12 +34,12 @@ export const NavBar: React.FC<PropTypes> = React.memo(({ navbar }) => {
         </div>
     )), [])
 
-    const mappedFriends = useMemo(() => Object.values(navbar.friends).map((friend) => (
+    const mappedFriends = useMemo(() => Object.values(friends).map((friend) => (
         <FriendItem
             friend={ friend }
             key={ friend.id }
         />
-    )), [navbar.friends])
+    )), [friends])
 
 
     return (

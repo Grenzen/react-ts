@@ -1,10 +1,10 @@
 import React from 'react'
-import { FriendTypes } from '../../../redux/state'
 import { Avatar } from '../../Avatar/Avatar'
 import s from './FriendItem.module.css'
+import { FriendType } from '../../../store/reducers/friends'
 
 type PropTypes = {
-    friend: FriendTypes
+    friend: FriendType
 }
 
 export const FriendItem: React.FC<PropTypes> = React.memo(({ friend }) => {

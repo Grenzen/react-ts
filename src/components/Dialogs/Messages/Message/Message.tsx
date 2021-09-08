@@ -1,13 +1,13 @@
 import React from 'react'
-import { UserMessageTypes } from '../../../../redux/state'
 import { Avatar } from '../../../Avatar/Avatar'
 import s from './Message.module.css'
+import { UserMessageType } from '../../../../store/reducers/dialogs'
 
 
 type PropTypes = {
     userMode: boolean
     name: string
-    message: UserMessageTypes
+    message: UserMessageType
     avatar: string | undefined
 }
 

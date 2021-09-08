@@ -1,16 +1,16 @@
 import React, { useMemo } from 'react'
-import { DialogTypes, UserMessageTypes, UserTypes } from '../../../redux/state'
 import { Message } from './Message/Message'
 import { NewMessage } from './NewMessage/NewMessage'
 import s from './Messages.module.css'
-import { ActionDialogsType } from '../../../store/reducers/dialogs'
+import { ActionDialogsType, DialogType, UserMessageType } from '../../../store/reducers/dialogs'
+import { UserType } from '../../../store/reducers/user'
 
 
 type PropTypes = {
-    messages: Array<UserMessageTypes>
-    friend: DialogTypes
+    messages: Array<UserMessageType>
+    friend: DialogType
     newMessageText: string
-    user: UserTypes
+    user: UserType
     dispatch: (action: ActionDialogsType) => void
 }
 
@@ -21,7 +21,7 @@ export const Messages: React.FC<PropTypes> = React.memo((
         newMessageText,
         user, dispatch,
     }) => {
-    const mappedMessages = useMemo(() => messages.map((message: UserMessageTypes, id) => {
+    const mappedMessages = useMemo(() => messages.map((message: UserMessageType, id) => {
         const name = message.id === user.id ? user.firstName : friend.name
         const avatar = message.id === user.id ? user.avatar : friend.avatar
         const userMode = message.id === user.id

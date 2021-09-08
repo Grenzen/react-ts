@@ -1,10 +1,10 @@
 import './index.css'
-import { store } from './redux/state'
+import * as reduxStore from './store/index'
 import ReactDOM from 'react-dom'
 import React from 'react'
 import { App } from './App'
 
-const rerenderTree = () => {
+const rerenderTree = (store: any) => {
     ReactDOM.render(
         <React.StrictMode>
             <App
@@ -14,5 +14,7 @@ const rerenderTree = () => {
         document.getElementById('root'),
     )
 }
-rerenderTree()
-store.subscribe(rerenderTree)
+rerenderTree(reduxStore)
+reduxStore.default.subscribe(() => {
+    rerenderTree(reduxStore)
+})

@@ -1,14 +1,14 @@
 import React from 'react'
 import { UserInfo } from './UserInfo/UserInfo'
-import { PostsTypes, UserTypes } from '../../redux/state'
 import { Posts } from './Posts/Posts'
 import s from './Profile.module.css'
-import { ActionPostsType } from '../../store/reducers/posts'
+import { ActionPostsType, PostsType } from '../../store/reducers/posts'
+import { UserType } from '../../store/reducers/user'
 
 
 type PropTypes = {
-    user: UserTypes
-    posts: PostsTypes
+    user: UserType
+    posts: PostsType
     dispatch: (action: ActionPostsType) => void
 }
 
