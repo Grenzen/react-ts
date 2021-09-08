@@ -2,12 +2,12 @@ import React, { ChangeEvent, FormEvent } from 'react'
 import s from './NewMessage.module.css'
 import { FormButton } from '../../../FormButton/FormButton'
 import { addNewMessage, updateNewMessageText } from '../../../../store/actions/dialogs'
-import { ActionDialogsType } from '../../../../store/reducers/dialogs'
+import { AppDispatch } from '../../../../store'
 
 type NewMessageType = {
     newMessageText: string
     userId: string
-    dispatch: (action: ActionDialogsType) => void
+    dispatch: AppDispatch
 }
 
 export const NewMessage: React.FC<NewMessageType> = React.memo((

@@ -2,13 +2,14 @@ import React, { useMemo } from 'react'
 import { Dialog } from './Dialog/Dialog'
 import { Messages } from './Messages/Messages'
 import s from './Dialogs.module.css'
-import { ActionDialogsType, DialogsType, DialogType } from '../../store/reducers/dialogs'
+import { DialogsType, DialogType } from '../../store/reducers/dialogs'
 import { UserType } from '../../store/reducers/user'
+import { AppDispatch } from '../../store'
 
 type PropTypes = {
     dialogs: DialogsType
     user: UserType
-    dispatch: (action: ActionDialogsType) => void
+    dispatch: AppDispatch
 }
 
 export const Dialogs: React.FC<PropTypes> = React.memo((

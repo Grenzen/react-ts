@@ -1,13 +1,14 @@
 import React from 'react'
 import { Profile } from '../../components/Profile/Profile'
-import { ActionPostsType, PostsType } from '../../store/reducers/posts'
+import { PostsType } from '../../store/reducers/posts'
 import { UserType } from '../../store/reducers/user'
+import { AppDispatch } from '../../store'
 
 
 type PropTypes = {
     user: UserType
     posts: PostsType
-    dispatch: (action: ActionPostsType) => void
+    dispatch: AppDispatch
 }
 
 export const ProfilePage: React.FC<PropTypes> = React.memo((

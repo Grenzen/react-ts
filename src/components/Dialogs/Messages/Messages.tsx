@@ -2,8 +2,9 @@ import React, { useMemo } from 'react'
 import { Message } from './Message/Message'
 import { NewMessage } from './NewMessage/NewMessage'
 import s from './Messages.module.css'
-import { ActionDialogsType, DialogType, UserMessageType } from '../../../store/reducers/dialogs'
+import { DialogType, UserMessageType } from '../../../store/reducers/dialogs'
 import { UserType } from '../../../store/reducers/user'
+import { AppDispatch } from '../../../store'
 
 
 type PropTypes = {
@@ -11,7 +12,7 @@ type PropTypes = {
     friend: DialogType
     newMessageText: string
     user: UserType
-    dispatch: (action: ActionDialogsType) => void
+    dispatch: AppDispatch
 }
 
 export const Messages: React.FC<PropTypes> = React.memo((

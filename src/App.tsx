@@ -4,18 +4,20 @@ import { useRoutes } from './routes'
 import { Header } from './components/Header/Header'
 import { NavBar } from './components/NavBar/NavBar'
 import './App.css'
+import { AppDispatch, RootState } from './store'
 
 export type AppTypes = {
-    store: any
+    state: RootState
+    dispatch: AppDispatch
 }
 
 export const App: React.FC<AppTypes> = (
     {
-        store,
+        state,
+        dispatch,
     }) => {
-    const state = store.default.getState()
     const { user, posts, dialogs, friends } = state
-    const routes = useRoutes(user, posts, dialogs, store.default.dispatch.bind(store))
+    const routes = useRoutes(user, posts, dialogs, dispatch)
     return (
         <Router>
             <div className="app-wrapper">

@@ -2,13 +2,14 @@ import React, { useMemo } from 'react'
 import { NewPost } from './NewPost/NewPost'
 import { PostItem } from './PostItem/PostItem'
 import s from './Posts.module.css'
-import { ActionPostsType, PostsType } from '../../../store/reducers/posts'
+import { PostsType } from '../../../store/reducers/posts'
+import { AppDispatch } from '../../../store'
 
 
 type PropTypes = {
     avatar: string
     userPosts: PostsType
-    dispatch: (action: ActionPostsType) => void
+    dispatch: AppDispatch
 }
 
 export const Posts: React.FC<PropTypes> = React.memo((

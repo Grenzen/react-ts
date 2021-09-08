@@ -2,12 +2,12 @@ import React, { FormEvent, ChangeEvent, KeyboardEvent } from 'react'
 import { FormButton } from '../../../FormButton/FormButton'
 import s from './NewPost.module.css'
 import * as actions from '../../../../store/actions/posts'
-import { ActionPostsType } from '../../../../store/reducers/posts'
+import { AppDispatch } from '../../../../store'
 
 
 type PropTypes = {
     newPostText: string
-    dispatch: (action: ActionPostsType) => void
+    dispatch: AppDispatch
 }
 
 export const NewPost: React.FC<PropTypes> = React.memo((

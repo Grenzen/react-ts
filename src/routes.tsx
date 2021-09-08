@@ -5,15 +5,16 @@ import { DialogsPage } from './Pages/DialogsPage/DialogsPage'
 import { NewsPage } from './Pages/NewsPage/NewsPage'
 import { MusicPage } from './Pages/MusicPage/MusicPage'
 import { SettingsPage } from './Pages/SettingsPage/SettingsPage'
-import { ActionDialogsType, DialogsType } from './store/reducers/dialogs'
-import { ActionPostsType, PostsType } from './store/reducers/posts'
+import { DialogsType } from './store/reducers/dialogs'
+import { PostsType } from './store/reducers/posts'
 import { UserType } from './store/reducers/user'
+import { AppDispatch } from './store'
 
 export const useRoutes = (
     user: UserType,
     posts: PostsType,
     dialogs: DialogsType,
-    dispatch: (action: ActionDialogsType | ActionPostsType) => void,
+    dispatch: AppDispatch,
 ) => {
     return (
         <Switch>
