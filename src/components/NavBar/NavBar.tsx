@@ -18,9 +18,10 @@ type PropType = {
 const nav: NavType = [
     { id: 0, name: 'Profile' },
     { id: 1, name: 'Dialogs' },
-    { id: 2, name: 'News' },
-    { id: 3, name: 'Music' },
-    { id: 4, name: 'Settings' },
+    { id: 2, name: 'Users' },
+    { id: 3, name: 'News' },
+    { id: 4, name: 'Music' },
+    { id: 5, name: 'Settings' },
 ]
 
 export const NavBar: React.FC<PropType> = React.memo(({ friends }) => {

@@ -1,0 +1,57 @@
+.userItemContainer {
+    width: 90%;
+    min-width: 34rem;
+    min-height: 126px;
+    margin: 1rem;
+    padding: 1rem;
+    border: 1px solid #312f2f;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+}
+
+.followContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.userInfoContainer {
+    width: 50%;
+}
+
+.userInfoFullName {
+    margin: 1rem 0;
+    font-size: 2rem;
+    color: #292727;
+}
+
+.userInfoStatus {
+    font-size: 1.1rem;
+    color: #292727;
+    font-weight: 500;
+}
+
+.userLocationContainer {
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.userLocationCountry {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #872325;
+}
+
+.userLocationCity {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}

@@ -34,7 +34,7 @@ export const NewMessage: React.FC<NewMessageType> = React.memo((
                     className={ s.newMessageText }
                     rows={ 1 }
                     value={ newMessageText }
-                    placeholder="Write message..."
+                    placeholder="Tap-tap..."
                     onChange={ onChangeMessageText }
                 />
                 <FormButton value="Send" position="stretch" primary={ true } size="medium"/>

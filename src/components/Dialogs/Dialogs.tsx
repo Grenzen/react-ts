@@ -40,7 +40,7 @@ export const Dialogs: React.FC<PropTypes> = React.memo((
                         changeNewMessageTextCallback={ changeNewMessageTextCallback }
                         addNewMessageToDialogCallback={ addNewMessageToDialogCallback }
                     />
-                    : 'Select dialog' }
+                    : <div className={ s.info }>Select dialog</div> }
             </div>
         </div>
     )

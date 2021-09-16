@@ -4,11 +4,11 @@ import { Avatar } from '../../Avatar/Avatar'
 import { UserType } from '../../../store/reducers/user'
 
 
-type PropType = {
+type UserInfoType = {
     user: UserType
 }
 
-export const UserInfo: React.FC<PropType> = React.memo(({ user }) => {
+export const UserInfo: React.FC<UserInfoType> = React.memo(({ user }) => {
     const {
         avatar,
         firstName,

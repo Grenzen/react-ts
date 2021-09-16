@@ -1,4 +1,5 @@
 .formButton {
+    min-width: 80px;
     box-sizing: border-box;
     cursor: pointer;
     border: none;
@@ -8,11 +9,9 @@
     color: azure;
 }
 
-.formButton
-
 /* mode */
-
 .primary {
+    padding: 0.7rem;
     background-color: #292727;
     color: #ffffff;
 }

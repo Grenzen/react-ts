@@ -13,9 +13,8 @@
 }
 
 .item:hover > .link,
-.link.active{
+.link.active {
     color: #c19445;
-    font-size: 1.6rem;
     transition: all .5s ease;
 }
 

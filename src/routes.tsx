@@ -5,6 +5,7 @@ import { DialogsPage } from './Pages/DialogsPage/DialogsPage'
 import { NewsPage } from './Pages/NewsPage/NewsPage'
 import { MusicPage } from './Pages/MusicPage/MusicPage'
 import { SettingsPage } from './Pages/SettingsPage/SettingsPage'
+import { UsersPage } from './Pages/UsersPage'
 
 export const useRoutes = () => {
     return (
@@ -14,6 +15,9 @@ export const useRoutes = () => {
             </Route>
             <Route path="/dialogs">
                 <DialogsPage/>
+            </Route>
+            <Route path="/users">
+                <UsersPage/>
             </Route>
             <Route path="/news">
                 <NewsPage/>
