@@ -2,7 +2,7 @@ import React from 'react'
 import { Dialogs } from '../../components/Dialogs/Dialogs'
 import { addNewMessage, selectDialog, updateNewMessageText } from '../../store/actions/dialogs'
 import { UserType } from '../../store/reducers/user'
-import { RootState } from '../../store'
+import { RootStateType } from '../../store'
 import { DialogsType } from '../../store/reducers/dialogs'
 import { connect } from 'react-redux'
 
@@ -17,7 +17,7 @@ export type MapDispatchPropType = {
     addNewMessageToDialogCallback: (userId: string) => void
 }
 
-const mapStateToProps = (state: RootState): MapStatePropType => {
+const mapStateToProps = (state: RootStateType): MapStatePropType => {
     return {
         user: state.user,
         dialogs: state.dialogs,

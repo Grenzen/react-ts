@@ -2,7 +2,7 @@ import React from 'react'
 import { Profile } from '../../components/Profile/Profile'
 import { PostsType } from '../../store/reducers/posts'
 import { UserType } from '../../store/reducers/user'
-import { RootState } from '../../store'
+import { RootStateType } from '../../store'
 import * as actions from '../../store/actions/posts'
 import { connect } from 'react-redux'
 
@@ -16,7 +16,7 @@ export type MapDispatchPropType = {
     addNewPostCallback: () => void
 }
 
-const mapStateToProps = (state: RootState): MapStatePropType => {
+const mapStateToProps = (state: RootStateType): MapStatePropType => {
     return {
         user: state.user,
         posts: state.posts,

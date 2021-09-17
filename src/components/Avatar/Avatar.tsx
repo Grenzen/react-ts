@@ -2,7 +2,7 @@ import React from 'react'
 import s from './Avatar.module.css'
 
 interface AvatarProps {
-    avatarUrl?: string
+    avatarUrl?: string | null
     size?: 'small' | 'medium' | 'large'
     shape?: 'square' | 'round'
 }

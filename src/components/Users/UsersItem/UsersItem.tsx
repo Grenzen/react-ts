@@ -6,7 +6,7 @@ import { UsersType } from '../../../store/reducers/users'
 
 type UsersItemType = {
     user: UsersType
-    changeFollowCallback: (userId: string, followed: boolean) => void
+    changeFollowCallback: (userId: number, followed: boolean) => void
 }
 
 export const UsersItem: React.FC<UsersItemType> = React.memo((
@@ -38,11 +38,11 @@ export const UsersItem: React.FC<UsersItemType> = React.memo((
         </div>
         <div className={ s.userInfoContainer }>
             <h3 className={ s.userInfoFullName }>{ user.userFullName }</h3>
-            <p className={ s.userInfoStatus }>{ user.userStatus }</p>
+            <p className={ s.userInfoStatus }>{ user.userStatus ? user.userStatus : `${ user.userFullName } has no status` }</p>
         </div>
         <div className={ s.userLocationContainer }>
-            <p className={ s.userLocationCountry }>{ user.userLocation.country }</p>
-            <p className={ s.userLocationCity }>{ user.userLocation.city }</p>
+            <p className={ s.userLocationCountry }>{ user.userLocation ? user.userLocation.country : 'No country' }</p>
+            <p className={ s.userLocationCity }>{ user.userLocation ? user.userLocation.city : 'No city' }</p>
         </div>
     </div>
 })

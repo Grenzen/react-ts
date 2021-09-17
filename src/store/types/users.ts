@@ -1,2 +1,11 @@
+// Fetch Users
+export const FETCH_USERS = 'FETCH-USERS'
+
+export const REQUESTED_USERS = 'REQUESTED-USERS'
+export const REQUESTED_USERS_SUCCEEDED = 'REQUESTED-USERS-SUCCEEDED'
+export const REQUESTED_USERS_FAILED = 'REQUESTED-USERS-FAILED'
+
 export const CHANGE_FOLLOW = 'CHANGE-FOLLOW'
-export const SET_USERS = 'SET-USERS'
+
+// Clear Users
+export const CLEAR_USERS = 'CLEAR-USERS'

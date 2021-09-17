@@ -5,7 +5,7 @@ import { DialogsPage } from './Pages/DialogsPage/DialogsPage'
 import { NewsPage } from './Pages/NewsPage/NewsPage'
 import { MusicPage } from './Pages/MusicPage/MusicPage'
 import { SettingsPage } from './Pages/SettingsPage/SettingsPage'
-import { UsersPage } from './Pages/UsersPage'
+import { UsersPage } from './Pages/UsersPage/UsersPage'
 
 export const useRoutes = () => {
     return (

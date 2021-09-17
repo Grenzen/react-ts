@@ -4,10 +4,10 @@ import { useRoutes } from './routes'
 import { Header } from './components/Header/Header'
 import { NavBar } from './components/NavBar/NavBar'
 import './App.css'
-import { RootState } from './store'
+import { RootStateType } from './store'
 
 export type AppTypes = {
-    state: RootState
+    state: RootStateType
 }
 
 export const App: React.FC<AppTypes> = (

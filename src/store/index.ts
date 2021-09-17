@@ -1,9 +1,19 @@
-import { createStore } from 'redux'
+import { compose, applyMiddleware, createStore } from 'redux'
+import createSagaMiddleware from 'redux-saga'
 import rootReducers from './reducers'
+import watchSagas from './sagas'
 import { useDispatch } from 'react-redux'
 
-export const store = createStore(rootReducers)
+export type RootStateType = ReturnType<typeof store.getState>
+export type AppDispatchType = typeof store.dispatch
+export const useAppDispatch = () => useDispatch<AppDispatchType>()
 
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch
-export const useAppDispatch = () => useDispatch<AppDispatch>()
+const saga = createSagaMiddleware()
+
+// redux dev tool
+const enhancer = compose(applyMiddleware(saga))
+export const store = createStore(rootReducers, enhancer)
+
+saga.run(watchSagas)
+
+export default store

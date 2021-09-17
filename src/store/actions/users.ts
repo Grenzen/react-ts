@@ -1,7 +1,27 @@
 import * as types from '../types/users'
 import { UsersType } from '../reducers/users'
 
-export const changeFollow = (userId: string, followed: boolean) => ({
+// Fetch Users for sagas
+export const fetchUsers = () => ({
+    type: types.FETCH_USERS,
+} as const)
+
+// Requested Users for reducer
+export const requestedUsers = () => ({
+    type: types.REQUESTED_USERS,
+} as const)
+
+export const requestedUsersSuccess = (users: UsersType[]) => ({
+    type: types.REQUESTED_USERS_SUCCEEDED,
+    payload: { users },
+} as const)
+
+export const requestedUsersError = () => ({
+    type: types.REQUESTED_USERS_FAILED,
+} as const)
+
+// other actions
+export const changeFollow = (userId: number, followed: boolean) => ({
     type: types.CHANGE_FOLLOW,
     payload: {
         userId,
@@ -9,9 +29,7 @@ export const changeFollow = (userId: string, followed: boolean) => ({
     },
 } as const)
 
-export const setUsers = (users: UsersType[]) => ({
-    type: types.SET_USERS,
-    payload: {
-        users,
-    },
+// Clear users
+export const clearUsers = () => ({
+    type: types.CLEAR_USERS,
 } as const)
