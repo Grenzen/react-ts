@@ -1,1 +1,1 @@
-Deploy: https://Grenzen.github.io/social-network
+Deploy: https://grenzen.github.io/social-network

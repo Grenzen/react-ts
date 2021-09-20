@@ -11,7 +11,12 @@ type UserServerType = {
 
 const BASE_API = 'https://social-network.samuraijs.com/api/1.0/'
 export const getUsers = async (page: string) => {
-    const { data, status } = await axios.get(`${ BASE_API }users?page=${ page }`)
+    const { data, status } = await axios.get(`${ BASE_API }users?page=${ page }`, {
+        withCredentials: true,
+        headers: {
+            'API-KEY': '8027485c-3830-4cbf-9745-2dbcc48019e6',
+        },
+    })
     const users = data.items.map(mappedUsers)
     return status === 200 && data ? users : null
 }
